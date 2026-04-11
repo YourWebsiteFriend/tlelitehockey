@@ -24,7 +24,7 @@ export default async function HomePage() {
       <MissionSection />
       <ServicesSection />
       <PricingSection />
-      <ProductCarouselSection products={products} />
+      {products.length > 0 && <ProductCarouselSection products={products} />}
       <TestimonialsSection />
       <PhotoGallery />
       <CtaBannerSection />

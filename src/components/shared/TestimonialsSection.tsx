@@ -1,149 +1,84 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { SectionWrapper } from "@/components/shared/SectionWrapper";
-
 interface Testimonial {
   quote: string;
   author: string;
   role: string;
 }
 
+// TODO: Replace with real testimonials from Brendan
 const testimonials: Testimonial[] = [
   {
-    quote:
-      "Brendan and his coaches completely transformed my son's skating in one season. The attention to detail is unreal.",
+    quote: "Brendan and his coaches completely transformed my son's skating in one season. The attention to detail is unreal.",
     author: "Sarah M.",
-    role: "Parent",
+    role: "Hockey Parent",
   },
   {
-    quote:
-      "TL Elite is the best thing we've done for my daughter's hockey development. She went from struggling to one of the strongest skaters on her team.",
+    quote: "TL Elite is the best thing we've done for my daughter's hockey development. She went from struggling to one of the strongest skaters on her team.",
     author: "Mike T.",
-    role: "Parent",
+    role: "Hockey Parent",
   },
   {
-    quote:
-      "The small group format is exactly what my son needed. He gets real coaching, not just ice time. His confidence has gone through the roof.",
+    quote: "The small group format is exactly what my son needed. He gets real coaching, not just ice time. His confidence has gone through the roof.",
     author: "Jennifer K.",
-    role: "Parent",
+    role: "Hockey Parent",
+  },
+  {
+    quote: "Within two sessions I could already see a difference in my kid's footwork. These coaches genuinely care about every player.",
+    author: "Chris R.",
+    role: "Hockey Parent",
+  },
+  {
+    quote: "We drive 45 minutes each way and it's worth every mile. No other program in the area comes close to this level of instruction.",
+    author: "Danielle F.",
+    role: "Hockey Parent",
+  },
+  {
+    quote: "Brendan has a gift for breaking down skills in a way that clicks for young players. My son asks to go to TL Elite — that says everything.",
+    author: "Tom H.",
+    role: "Hockey Parent",
   },
 ];
 
-interface Props {
-  variant?: "carousel" | "grid";
+// Duplicate for seamless infinite loop
+const doubled = [...testimonials, ...testimonials];
+
+function TestimonialCard({ t }: { t: Testimonial }) {
+  return (
+    <div className="flex-shrink-0 w-[300px] sm:w-[360px] bg-[#111111] border border-white/10 rounded-2xl p-7 mx-3">
+      <p className="text-[#F78E2B] text-base mb-4">★★★★★</p>
+      <p className="text-white/85 text-sm leading-relaxed italic">
+        &ldquo;{t.quote}&rdquo;
+      </p>
+      <div className="mt-6 pt-5 border-t border-white/10">
+        <p className="text-white font-bold text-sm">{t.author}</p>
+        <p className="text-white/40 text-xs mt-0.5">{t.role}</p>
+      </div>
+    </div>
+  );
 }
 
-export function TestimonialsSection({ variant = "carousel" }: Props) {
-  const [current, setCurrent] = useState(0);
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
-
-  const startAutoAdvance = () => {
-    if (intervalRef.current) clearInterval(intervalRef.current);
-    intervalRef.current = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % testimonials.length);
-    }, 5000);
-  };
-
-  useEffect(() => {
-    if (variant === "carousel") {
-      startAutoAdvance();
-    }
-    return () => {
-      if (intervalRef.current) clearInterval(intervalRef.current);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [variant]);
-
-  const go = (index: number) => {
-    setCurrent(index);
-    startAutoAdvance();
-  };
-
-  const prev = () => go((current - 1 + testimonials.length) % testimonials.length);
-  const next = () => go((current + 1) % testimonials.length);
-
-  if (variant === "grid") {
-    return (
-      <SectionWrapper className="bg-[#111111]">
-        <h2 className="section-heading text-white text-3xl sm:text-4xl text-center mb-16">
+export function TestimonialsSection() {
+  return (
+    <section className="w-full bg-black py-20 lg:py-28">
+      {/* Heading — constrained */}
+      <div className="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8 text-center mb-12">
+        <p className="text-[#F78E2B] text-xs uppercase tracking-[0.3em] font-bold mb-3">
+          TESTIMONIALS
+        </p>
+        <h2 className="section-heading text-white text-3xl sm:text-4xl">
           WHAT PARENTS ARE SAYING
         </h2>
-        <div className="grid md:grid-cols-3 gap-6">
-          {testimonials.map((t, i) => (
-            <div
-              key={i}
-              className="bg-black rounded-2xl p-8 border border-white/10"
-            >
-              <p className="text-[#F78E2B] text-xl mb-6">★★★★★</p>
-              <p className="text-white/90 text-base italic leading-relaxed">
-                &ldquo;{t.quote}&rdquo;
-              </p>
-              <p className="text-white/50 text-sm mt-6">
-                — {t.author}, {t.role}
-              </p>
-            </div>
-          ))}
-        </div>
-      </SectionWrapper>
-    );
-  }
+      </div>
 
-  const t = testimonials[current];
-
-  return (
-    <SectionWrapper className="bg-[#111111]">
-      <h2 className="section-heading text-white text-3xl sm:text-4xl text-center mb-16">
-        WHAT PARENTS ARE SAYING
-      </h2>
-
-      <div className="relative max-w-4xl mx-auto">
-        {/* Arrows */}
-        <button
-          onClick={prev}
-          aria-label="Previous testimonial"
-          className="absolute -left-4 sm:-left-12 top-1/2 -translate-y-1/2 text-white/40 hover:text-white transition-colors p-2"
-        >
-          <ChevronLeft className="w-6 h-6" />
-        </button>
-        <button
-          onClick={next}
-          aria-label="Next testimonial"
-          className="absolute -right-4 sm:-right-12 top-1/2 -translate-y-1/2 text-white/40 hover:text-white transition-colors p-2"
-        >
-          <ChevronRight className="w-6 h-6" />
-        </button>
-
-        {/* Stars */}
-        <p className="text-[#F78E2B] text-xl text-center mb-6">★★★★★</p>
-
-        {/* Quote */}
-        <p className="text-white/90 text-xl lg:text-2xl italic text-center max-w-3xl mx-auto leading-relaxed">
-          &ldquo;{t.quote}&rdquo;
-        </p>
-
-        {/* Attribution */}
-        <p className="text-white/50 text-sm text-center mt-6">
-          — {t.author}, {t.role}
-        </p>
-
-        {/* Dot indicators */}
-        <div className="flex gap-2 justify-center mt-10">
-          {testimonials.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => go(i)}
-              aria-label={`Go to testimonial ${i + 1}`}
-              className={`rounded-full transition-all ${
-                i === current
-                  ? "bg-[#F78E2B] w-6 h-2"
-                  : "bg-white/20 w-2 h-2"
-              }`}
-            />
+      {/* Marquee — full bleed */}
+      <div className="overflow-hidden">
+        <div className="flex animate-marquee">
+          {doubled.map((t, i) => (
+            <TestimonialCard key={i} t={t} />
           ))}
         </div>
       </div>
-    </SectionWrapper>
+    </section>
   );
 }

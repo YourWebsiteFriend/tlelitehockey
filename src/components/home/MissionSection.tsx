@@ -5,9 +5,9 @@ import { SectionWrapper } from "@/components/shared/SectionWrapper";
 export function MissionSection() {
   return (
     <SectionWrapper className="bg-[#111111]">
-      <div className="grid lg:grid-cols-2 gap-8 items-stretch">
+      <div className="grid lg:grid-cols-2 gap-8">
         {/* Left: real action photo */}
-        <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-[#0a0a0a]">
+        <div className="relative min-h-[300px] lg:min-h-0 lg:self-stretch rounded-2xl overflow-hidden bg-[#0a0a0a]">
           <Image
             src="/images/DSC02632.jpg"
             alt="Coach Brendan Heayden demonstrating on ice"

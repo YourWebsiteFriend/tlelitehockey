@@ -137,7 +137,7 @@ export function Footer() {
       <div className="border-t border-white/10">
         <div className="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="flex items-center gap-4 text-white/40 text-xs">
-            <span>© 2025 TL Elite Hockey School LLC</span>
+            <span>© 2026 TL Elite Hockey School LLC</span>
             <span className="hidden sm:inline">·</span>
             <Link href="#" className="hover:text-white/70 transition-colors focus:outline-none focus-visible:underline">
               Terms &amp; Conditions

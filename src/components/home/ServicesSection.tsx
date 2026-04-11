@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Users, CalendarDays, Film } from "lucide-react";
+import { Users, CalendarDays, Film, Star } from "lucide-react";
 import { SectionWrapper } from "@/components/shared/SectionWrapper";
 import { useInView } from "@/hooks/useInView";
 
@@ -21,11 +21,18 @@ const services = [
     href: "/clinics",
   },
   {
+    icon: Star,
+    title: "PRIVATE LESSONS",
+    body: "One coach. One player. Maximum development. Available at Thayer Sports Center in Braintree and Gallo Ice Arena in Bourne.",
+    linkLabel: "Request a Session →",
+    href: "/private-lessons",
+  },
+  {
     icon: Film,
     title: "FILM ANALYSIS",
     body: "Two monthly film sessions with TL coaches who break down your decision-making, positioning, and technique — live on Zoom. See the game differently.",
     linkLabel: "Learn More →",
-    href: "/about",
+    href: "/contact",
   },
 ];
 
@@ -41,7 +48,7 @@ export function ServicesSection() {
         Year-round development for players ages 5–18
       </p>
 
-      <div ref={ref} className="grid md:grid-cols-3 gap-6">
+      <div ref={ref} className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {services.map((service, i) => {
           const Icon = service.icon;
           return (

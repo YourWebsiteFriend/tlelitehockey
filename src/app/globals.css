@@ -178,4 +178,17 @@
     animation: fade-up 0.65s ease both;
     opacity: 1;
   }
+
+  /* ── Testimonial marquee ──────────────────────────────────────────── */
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  .animate-marquee {
+    animation: marquee 40s linear infinite;
+    will-change: transform;
+  }
+  .animate-marquee:hover {
+    animation-play-state: paused;
+  }
 }

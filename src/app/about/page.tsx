@@ -95,7 +95,7 @@ export default function AboutPage() {
         </p>
       </SectionWrapper>
 
-      <TestimonialsSection variant="grid" />
+      <TestimonialsSection />
       <CtaBannerSection />
     </>
   );
