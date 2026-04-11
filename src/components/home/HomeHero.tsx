@@ -1,27 +1,38 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { ChevronDown } from "lucide-react";
 
 export function HomeHero() {
   return (
     <div className="relative min-h-screen bg-black flex items-center justify-center overflow-hidden">
-      {/* Gradient background fallback */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#0a1f0a] via-black to-black" />
+      {/* Static rink background — always visible */}
+      <Image
+        src="/images/hero-rink.png"
+        alt=""
+        fill
+        className="object-cover"
+        priority
+        sizes="100vw"
+      />
 
-      {/* Video — hidden until loaded */}
+      {/* Video overlay — plays on top when available */}
       <video
         autoPlay
         muted
         loop
         playsInline
-        className="absolute inset-0 w-full h-full object-cover opacity-40"
+        className="absolute inset-0 w-full h-full object-cover"
         onError={(e) => {
           (e.target as HTMLVideoElement).style.display = "none";
         }}
       >
         <source src="/videos/hero.mp4" type="video/mp4" />
       </video>
+
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-black/65" />
 
       {/* Content */}
       <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">

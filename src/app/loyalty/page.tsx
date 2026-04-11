@@ -46,6 +46,7 @@ export default function LoyaltyPage() {
       <PageHero
         heading="MEMBERS REWARDS"
         body="Every session. Every purchase. Every rep counts."
+        backgroundImage="/images/braintree-3.jpg"
       />
 
       {/* Main section */}

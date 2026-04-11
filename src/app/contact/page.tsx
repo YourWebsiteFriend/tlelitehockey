@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <>
-      <PageHero heading="GET IN TOUCH" />
+      <PageHero heading="GET IN TOUCH" backgroundImage="/images/braintree-2.jpg" />
 
       <SectionWrapper className="bg-black">
         <div className="grid lg:grid-cols-3 gap-16">

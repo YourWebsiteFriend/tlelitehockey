@@ -42,7 +42,7 @@ export function LoginForm() {
         {/* Logo */}
         <div className="flex justify-center mb-8">
           <Image
-            src="/images/logo.svg"
+            src="/images/logo-transparent.png"
             alt="TL Elite Hockey"
             width={120}
             height={60}

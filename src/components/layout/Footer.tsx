@@ -22,7 +22,7 @@ export function Footer() {
               className="focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4CAF50] rounded-full"
             >
               <Image
-                src="/images/logo-badge.png"
+                src="/images/logo-primary.png"
                 alt="TL Elite Hockey badge"
                 width={90}
                 height={90}

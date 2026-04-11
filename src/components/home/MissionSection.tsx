@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { SectionWrapper } from "@/components/shared/SectionWrapper";
 
@@ -5,17 +6,16 @@ export function MissionSection() {
   return (
     <SectionWrapper className="bg-[#111111]">
       <div className="grid lg:grid-cols-2 gap-8 items-stretch">
-        {/* Left: decorative panel */}
-        <div className="relative aspect-[4/3] bg-gradient-to-br from-[#1a3a1a] to-[#0a0a0a] rounded-2xl overflow-hidden flex items-center justify-center">
-          {/* Decorative TL mark */}
-          <div className="text-center select-none pointer-events-none">
-            <div className="text-[#4CAF50]/30 font-black text-[180px] leading-none tracking-tighter">
-              TL
-            </div>
-            <div className="text-white/10 font-black uppercase tracking-[0.5em] text-sm mt-2">
-              ELITE HOCKEY
-            </div>
-          </div>
+        {/* Left: real action photo */}
+        <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-[#0a0a0a]">
+          <Image
+            src="/images/action-training.png"
+            alt="TL Elite Hockey training session"
+            fill
+            className="object-cover"
+            sizes="(max-width: 1024px) 100vw, 50vw"
+          />
+          <div className="absolute inset-0 bg-black/20" />
         </div>
 
         {/* Right: green card */}

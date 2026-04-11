@@ -24,6 +24,7 @@ export default async function ClinicsPage() {
       <PageHero
         heading="SEASONAL CLINICS"
         body="High-intensity skill development throughout the year. Up to 25 players, 5+ coaches on the ice."
+        backgroundImage="/images/hockey-drill.png"
       />
 
       {/* Stats bar */}

@@ -117,11 +117,11 @@ export function Navbar() {
             aria-label="TL Elite Hockey — Home"
           >
             <Image
-              src="/images/logo.png"
+              src="/images/logo-transparent.png"
               alt="TL Elite Hockey"
               width={120}
               height={60}
-              className="h-[60px] w-auto"
+              className="h-[56px] w-auto"
               priority
             />
           </Link>
