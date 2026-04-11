@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { UserCircle } from "lucide-react";
 import { PageHero } from "@/components/layout/PageHero";
 import { SectionWrapper } from "@/components/shared/SectionWrapper";
 import { TestimonialsSection } from "@/components/shared/TestimonialsSection";
@@ -16,13 +15,13 @@ const coaches = [
   {
     name: "BRENDAN HEAYDEN",
     role: "Founder & Head Coach",
-    photo: "/images/coach-brendan.jpg",
+    photo: "/images/DSC02632.jpg",
     bio: "Brendan Heayden founded TL Elite Hockey School in 2021 with one goal: give young players the same level of instruction and intensity that shaped his own career. A lifelong hockey player with deep roots in New England hockey, Brendan brings a competitive mindset and a player-first approach to every session.",
   },
   {
     name: "MITCH WALINSKI",
     role: "Assistant Coach",
-    photo: null,
+    photo: "/images/DSC02705.jpg",
     bio: "Mitch Walinski joined TL Elite as assistant coach and quickly became an integral part of the program's identity. Known for his ability to connect with players of all ages, Mitch brings energy and technical precision to every session.",
   },
 ];
@@ -33,7 +32,7 @@ export default function AboutPage() {
       <PageHero
         heading="OUR STORY"
         body="Building elite youth hockey players through intensity, discipline, and precision."
-        backgroundImage="/images/hockey-huddle.png"
+        backgroundImage="/images/DSC02709.jpg"
       />
 
       {/* Coaches */}
@@ -53,19 +52,13 @@ export default function AboutPage() {
             >
               {/* Coach photo */}
               <div className="relative h-80 bg-[#0a0a0a] overflow-hidden">
-                {coach.photo ? (
-                  <Image
-                    src={coach.photo}
-                    alt={`${coach.name} — TL Elite Hockey`}
-                    fill
-                    className="object-cover object-top"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                ) : (
-                  <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-b from-[#1a1a1a] to-[#0a0a0a]">
-                    <UserCircle className="text-white/20 w-32 h-32" />
-                  </div>
-                )}
+                <Image
+                  src={coach.photo}
+                  alt={`${coach.name} — TL Elite Hockey`}
+                  fill
+                  className="object-cover object-top"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
               </div>
               {/* Info */}
               <div className="p-8">

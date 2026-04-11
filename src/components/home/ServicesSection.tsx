@@ -1,12 +1,15 @@
+"use client";
+
 import Link from "next/link";
 import { Users, CalendarDays, Film } from "lucide-react";
 import { SectionWrapper } from "@/components/shared/SectionWrapper";
+import { useInView } from "@/hooks/useInView";
 
 const services = [
   {
     icon: Users,
     title: "SMALL GROUP SESSIONS",
-    body: "Max 12 players per group. Focused reps with direct coaching on skating, shooting, passing, and game IQ.",
+    body: "Max 8 players per group. Focused reps with direct coaching on skating, shooting, passing, and game IQ.",
     linkLabel: "Book Now →",
     href: "/book",
   },
@@ -20,13 +23,15 @@ const services = [
   {
     icon: Film,
     title: "FILM ANALYSIS",
-    body: "Video review sessions that break down your game — positioning, decision making, and compete level. See the game differently.",
+    body: "Two monthly film sessions with TL coaches who break down your decision-making, positioning, and technique — live on Zoom. See the game differently.",
     linkLabel: "Learn More →",
     href: "/about",
   },
 ];
 
 export function ServicesSection() {
+  const { ref, inView } = useInView();
+
   return (
     <SectionWrapper className="bg-black">
       <h2 className="section-heading text-white text-3xl sm:text-4xl text-center mb-4">
@@ -36,13 +41,16 @@ export function ServicesSection() {
         Year-round development for players ages 5–18
       </p>
 
-      <div className="grid md:grid-cols-3 gap-6">
-        {services.map((service) => {
+      <div ref={ref} className="grid md:grid-cols-3 gap-6">
+        {services.map((service, i) => {
           const Icon = service.icon;
           return (
             <div
               key={service.title}
-              className="bg-[#111111] border border-white/10 rounded-2xl p-8 hover:border-[#4CAF50]/50 transition-colors flex flex-col"
+              className={`bg-[#111111] border border-white/10 rounded-2xl p-8 hover:border-[#4CAF50]/50 transition-all duration-300 flex flex-col ${
+                inView ? "animate-fade-up" : "opacity-0"
+              }`}
+              style={{ animationDelay: `${i * 0.1}s` }}
             >
               <Icon className="text-[#4CAF50] w-10 h-10 mb-6" />
               <h3 className="font-bold uppercase text-white text-xl mb-3">

@@ -40,7 +40,7 @@ export function HomeHero() {
           TL ELITE HOCKEY SCHOOL
         </p>
 
-        <h1 className="font-black uppercase text-5xl sm:text-7xl lg:text-8xl text-white tracking-tight leading-none">
+        <h1 className="font-black uppercase text-4xl sm:text-6xl lg:text-8xl text-white tracking-tight leading-none">
           TRAIN WITH
           <br />
           TL ELITE

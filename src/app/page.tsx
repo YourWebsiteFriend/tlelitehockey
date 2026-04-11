@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import { HomeHero } from "@/components/home/HomeHero";
 import { MissionSection } from "@/components/home/MissionSection";
 import { ServicesSection } from "@/components/home/ServicesSection";
+import { PricingSection } from "@/components/home/PricingSection";
 import { ProductCarouselSection } from "@/components/home/ProductCarouselSection";
 import { TestimonialsSection } from "@/components/shared/TestimonialsSection";
+import { PhotoGallery } from "@/components/home/PhotoGallery";
 import { CtaBannerSection } from "@/components/home/CtaBannerSection";
 import { getProducts } from "@/services/products.service";
 
@@ -21,8 +23,10 @@ export default async function HomePage() {
       <HomeHero />
       <MissionSection />
       <ServicesSection />
+      <PricingSection />
       <ProductCarouselSection products={products} />
       <TestimonialsSection />
+      <PhotoGallery />
       <CtaBannerSection />
       <script
         type="application/ld+json"

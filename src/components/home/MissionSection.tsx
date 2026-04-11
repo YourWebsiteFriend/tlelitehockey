@@ -9,10 +9,10 @@ export function MissionSection() {
         {/* Left: real action photo */}
         <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-[#0a0a0a]">
           <Image
-            src="/images/action-training.png"
-            alt="TL Elite Hockey training session"
+            src="/images/DSC02632.jpg"
+            alt="Coach Brendan Heayden demonstrating on ice"
             fill
-            className="object-cover"
+            className="object-cover object-top"
             sizes="(max-width: 1024px) 100vw, 50vw"
           />
           <div className="absolute inset-0 bg-black/20" />
