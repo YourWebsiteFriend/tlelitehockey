@@ -5,7 +5,7 @@ import { SessionsBoard } from "@/components/book/SessionsBoard";
 import { getSessionsBySeason } from "@/services/sessions.service";
 
 export const metadata: Metadata = {
-  title: "Youth Hockey Clinics | TL Elite Hockey Skill Development",
+  title: "Youth Hockey Clinics",
   description:
     "TL Elite seasonal hockey clinics for youth players. High-intensity, multi-coach format. Christmas, Thanksgiving, Summer clinics at Thayer Sports Center, Braintree MA.",
 };

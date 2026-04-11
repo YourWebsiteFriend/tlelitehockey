@@ -4,7 +4,7 @@ import { SectionWrapper } from "@/components/shared/SectionWrapper";
 import { PrivateLessonsForm } from "@/components/forms/PrivateLessonsForm";
 
 export const metadata: Metadata = {
-  title: "Private Hockey Lessons | TL Elite Hockey Training",
+  title: "Private Hockey Lessons",
   description:
     "Book a private hockey lesson with TL Elite. Available at Thayer Sports Center (Braintree) and Gallo Ice Arena (Bourne). Submit your inquiry today.",
 };

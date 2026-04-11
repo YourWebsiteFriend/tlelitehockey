@@ -3,9 +3,9 @@ import { ShopClient } from "@/components/shop/ShopClient";
 import { getProducts } from "@/services/products.service";
 
 export const metadata: Metadata = {
-  title: "Shop TL Gear | TL Elite Hockey",
+  title: "TL Elite Hockey Shop",
   description:
-    "Official TL Elite Hockey merchandise. Hats, t-shirts, hoodies, and snapbacks.",
+    "Shop TL Elite Hockey gear — apparel, sticks, training equipment. Official TL Elite merchandise.",
 };
 
 export default async function ShopPage() {

@@ -7,7 +7,7 @@ import { TestimonialsSection } from "@/components/shared/TestimonialsSection";
 import { CtaBannerSection } from "@/components/home/CtaBannerSection";
 
 export const metadata: Metadata = {
-  title: "Youth Hockey Development | TL Elite Hockey",
+  title: "About TL Elite Hockey",
   description:
     "Meet the coaching staff behind TL Elite Hockey School. Brendan Heayden and Mitch Walinski bring competitive hockey experience to youth player development in Greater Boston.",
 };

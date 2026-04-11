@@ -23,10 +23,38 @@ export const metadata: Metadata = {
   },
   description:
     "TL Elite Hockey School provides small-group and private youth hockey training in Greater Boston. Book sessions, clinics, and private lessons at Thayer Sports Center in Braintree, MA.",
+  keywords: [
+    "youth hockey training",
+    "hockey lessons Boston",
+    "hockey clinics Braintree",
+    "private hockey lessons",
+    "TL Elite Hockey",
+    "Thayer Sports Center",
+    "youth hockey development",
+    "hockey school Massachusetts",
+  ],
   openGraph: {
     siteName: "TL Elite Hockey",
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "/images/og-default.jpg",
+        width: 1200,
+        height: 630,
+        alt: "TL Elite Hockey School",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/images/og-default.jpg"],
+  },
+  verification: {
+    google: "VKTeOtBCFYtgYKmhORumVMihR5A7l_Ubkf5hdsu__o0",
+  },
+  other: {
+    "fb:admins": "TLeliteHockey",
   },
 };
 

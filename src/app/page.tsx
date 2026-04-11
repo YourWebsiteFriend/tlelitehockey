@@ -8,10 +8,9 @@ import { CtaBannerSection } from "@/components/home/CtaBannerSection";
 import { getProducts } from "@/services/products.service";
 
 export const metadata: Metadata = {
-  title:
-    "TL Elite Hockey | Youth Player Development | Thayer Sports Center, Braintree, MA",
+  title: "Elite Youth Hockey Training in Greater Boston",
   description:
-    "TL Elite Hockey School provides small-group and private youth hockey training in Greater Boston. Book drop-in sessions, Spring and Summer packages at Thayer Sports Center, Braintree MA.",
+    "TL Elite Hockey School — small-group youth hockey training at Thayer Sports Center, Braintree MA. Book Spring 2026 and Summer 2026 sessions now.",
 };
 
 export default async function HomePage() {
@@ -25,6 +24,33 @@ export default async function HomePage() {
       <ProductCarouselSection products={products} />
       <TestimonialsSection />
       <CtaBannerSection />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "SportsOrganization",
+            "name": "TL Elite Hockey School",
+            "url": "https://www.tlelitehockey.com",
+            "logo": "https://www.tlelitehockey.com/images/logo-primary.png",
+            "description": "Elite small-group youth hockey training in Greater Boston.",
+            "telephone": "+15086415842",
+            "email": "brendanheayden@tlelitehockey.com",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "1515 Washington St",
+              "addressLocality": "Braintree",
+              "addressRegion": "MA",
+              "postalCode": "02184",
+              "addressCountry": "US"
+            },
+            "sameAs": [
+              "https://www.instagram.com/tlelitehockey",
+              "https://www.facebook.com/tlelitehockey"
+            ]
+          }),
+        }}
+      />
     </>
   );
 }

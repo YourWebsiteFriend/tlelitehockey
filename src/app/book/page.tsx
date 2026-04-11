@@ -4,7 +4,7 @@ import { SessionsBoard } from "@/components/book/SessionsBoard";
 import { getSessionsBySeason } from "@/services/sessions.service";
 
 export const metadata: Metadata = {
-  title: "Skate With Us | TL Elite Hockey",
+  title: "Book Youth Hockey Sessions",
   description:
     "Book drop-in sessions, Spring 2026 packages, or Summer 2026 packages. Small-group training for ages 5–18 at Thayer Sports Center, Braintree MA.",
 };

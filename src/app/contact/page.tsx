@@ -5,7 +5,7 @@ import { SectionWrapper } from "@/components/shared/SectionWrapper";
 import { ContactForm } from "@/components/forms/ContactForm";
 
 export const metadata: Metadata = {
-  title: "Get In Touch | TL Elite Hockey",
+  title: "Contact TL Elite Hockey",
   description:
     "Contact TL Elite Hockey School. Questions about sessions, clinics, or private lessons? We'd love to hear from you.",
 };
