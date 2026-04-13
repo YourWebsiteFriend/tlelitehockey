@@ -42,7 +42,7 @@ export function SessionsBoard({ sessions, hideFilters = false }: Props) {
           <TabsTrigger
             key={tab.value}
             value={tab.value}
-            className="rounded-none border-b-2 border-transparent data-active:border-[#F78E2B] data-active:text-white data-[state=active]:border-[#F78E2B] data-[state=active]:text-white text-white/50 px-6 pb-4 text-sm font-bold uppercase tracking-wide bg-transparent hover:text-white transition-colors data-active:bg-transparent data-[state=active]:bg-transparent data-active:shadow-none data-[state=active]:shadow-none"
+            className="rounded-none border-b-2 border-b-transparent data-[state=active]:border-b-[#F78E2B] data-[state=active]:text-white text-white/50 px-6 pb-4 text-sm font-bold uppercase tracking-wide bg-transparent hover:text-white transition-colors data-[state=active]:bg-transparent data-[state=active]:shadow-none"
           >
             {tab.label}
           </TabsTrigger>
