@@ -81,7 +81,7 @@ export function SessionCard({ session }: Props) {
       {/* Detail chips */}
       <div className="flex flex-wrap gap-2">
         {session.age_group && (
-          <span className="bg-white/10 rounded-full px-3 py-1 text-xs text-white/60">
+          <span className="bg-[#F78E2B]/20 border border-[#F78E2B]/50 rounded-full px-3 py-1 text-xs font-bold text-[#F78E2B]">
             {session.age_group}
           </span>
         )}
@@ -97,7 +97,7 @@ export function SessionCard({ session }: Props) {
 
       {/* Price */}
       <div className="flex items-baseline gap-2 mt-1">
-        <span className="text-[#F78E2B] text-3xl font-black">
+        <span className="text-white/60 text-lg font-bold">
           ${session.price}
         </span>
         <span className="text-white/40 text-sm">
