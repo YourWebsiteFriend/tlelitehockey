@@ -12,11 +12,11 @@ import { NavAuthButton } from "./NavAuthButton";
 const leftNavLinks = [
   { label: "About", href: "/about" },
   { label: "Clinics", href: "/clinics" },
+  { label: "Private Lessons", href: "/private-lessons" },
   { label: "Schedule", href: "/schedule" },
 ];
 
 const rightNavLinks = [
-  { label: "Private Lessons", href: "/private-lessons" },
   { label: "Contact", href: "/contact" },
 ];
 
