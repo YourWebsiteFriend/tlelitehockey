@@ -66,3 +66,22 @@ export async function signOut(): Promise<ActionResult<void>> {
 
   return { success: true, data: undefined };
 }
+
+export async function sendPasswordReset(
+  email: string
+): Promise<ActionResult<void>> {
+  try {
+    const supabase = await getSupabaseServerClient();
+    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/auth/reset-password`,
+    });
+    if (error) {
+      console.error("[auth.actions] sendPasswordReset error:", error);
+      // Always return success to avoid leaking whether email exists
+    }
+    return { success: true, data: undefined };
+  } catch (err) {
+    console.error("[auth.actions] sendPasswordReset unexpected error:", err);
+    return { success: true, data: undefined }; // Still return success
+  }
+}

@@ -42,12 +42,14 @@ export async function middleware(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser();
 
-  // Auth guard: /account requires authentication
-  const isAccountRoute = request.nextUrl.pathname.startsWith("/account");
+  // Auth guard: /account and /loyalty require authentication
+  const { pathname } = request.nextUrl;
+  const isProtectedRoute =
+    pathname.startsWith("/account") || pathname.startsWith("/loyalty");
 
-  if (isAccountRoute && !user) {
+  if (isProtectedRoute && !user) {
     const loginUrl = new URL("/auth/login", request.url);
-    loginUrl.searchParams.set("redirectTo", request.nextUrl.pathname);
+    loginUrl.searchParams.set("redirectTo", pathname);
     return NextResponse.redirect(loginUrl);
   }
 

@@ -39,7 +39,7 @@ export default async function HomePage() {
             "logo": "https://www.tlelitehockey.com/images/logo-primary.png",
             "description": "Elite small-group youth hockey training in Greater Boston.",
             "telephone": "+15086415842",
-            "email": "brendanheayden@tlelitehockey.com",
+            "email": "brendan@tlelitehockey.com",
             "address": {
               "@type": "PostalAddress",
               "streetAddress": "1515 Washington St",

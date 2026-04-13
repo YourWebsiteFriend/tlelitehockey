@@ -15,3 +15,13 @@ export function getSupabaseBrowserClient() {
 
   return client;
 }
+
+export async function signInWithGoogle() {
+  const supabase = getSupabaseBrowserClient();
+  return supabase.auth.signInWithOAuth({
+    provider: 'google',
+    options: {
+      redirectTo: `${window.location.origin}/auth/callback`,
+    },
+  });
+}

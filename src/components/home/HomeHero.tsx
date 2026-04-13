@@ -1,41 +1,73 @@
 "use client";
 
-import Link from "next/link";
+import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { ChevronDown } from "lucide-react";
 
-export function HomeHero() {
-  return (
-    <div className="relative min-h-screen bg-black flex items-center justify-center overflow-hidden">
-      {/* Static rink background — always visible */}
-      <Image
-        src="/images/hero-rink.png"
-        alt=""
-        fill
-        className="object-cover"
-        priority
-        sizes="100vw"
-      />
+const slides = [
+  { src: "/images/DSC02650.jpg", alt: "Youth hockey player in training at Thayer Sports Center" },
+  { src: "/images/DSC02663.jpg", alt: "Coach delivering on-ice instruction at TL Elite Hockey" },
+  { src: "/images/DSC02675.jpg", alt: "Small-group session on the ice at TL Elite" },
+  { src: "/images/DSC02690.jpg", alt: "Player working on skill development at TL Elite" },
+  { src: "/images/DSC02709.jpg", alt: "TL Elite coach working with young players" },
+  { src: "/images/DSC02727.jpg", alt: "Players in skating drill at TL Elite Hockey" },
+  { src: "/images/DSC02744.jpg", alt: "Action shot during TL Elite Hockey training" },
+  { src: "/images/DSC02757.jpg", alt: "Youth players at TL Elite Hockey School" },
+];
 
-      {/* Video overlay — plays on top when available */}
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover"
-        onError={(e) => {
-          (e.target as HTMLVideoElement).style.display = "none";
-        }}
-      >
-        <source src="/videos/hero.mp4" type="video/mp4" />
-      </video>
+export function HomeHero() {
+  const [current, setCurrent] = useState(0);
+  const [paused, setPaused] = useState(false);
+
+  const advance = useCallback(() => {
+    setCurrent((c) => (c + 1) % slides.length);
+  }, []);
+
+  useEffect(() => {
+    if (paused) return;
+    const id = setInterval(advance, 5000);
+    return () => clearInterval(id);
+  }, [paused, advance]);
+
+  // Pause on tab hidden
+  useEffect(() => {
+    const handler = () => setPaused(document.hidden);
+    document.addEventListener("visibilitychange", handler);
+    return () => document.removeEventListener("visibilitychange", handler);
+  }, []);
+
+  return (
+    <div
+      className="relative w-full min-h-screen flex items-center justify-center bg-black overflow-hidden"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      role="region"
+      aria-label="TL Elite Hockey photo slideshow"
+    >
+      {/* Slides — stack with absolute positioning, fade in/out */}
+      {slides.map((slide, i) => (
+        <div
+          key={slide.src}
+          className={`absolute inset-0 transition-opacity duration-1000 ${i === current ? "opacity-100" : "opacity-0"}`}
+          aria-hidden={i !== current}
+        >
+          <Image
+            src={slide.src}
+            alt={slide.alt}
+            fill
+            className="object-cover object-center"
+            priority={i === 0}
+            sizes="100vw"
+          />
+        </div>
+      ))}
 
       {/* Dark overlay */}
-      <div className="absolute inset-0 bg-black/65" />
+      <div className="absolute inset-0 bg-black/65" aria-hidden="true" />
 
       {/* Content */}
-      <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
+      <div className="relative z-10 mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8 text-center">
         <p className="text-[#F78E2B] text-sm uppercase tracking-[0.3em] mb-6">
           TL ELITE HOCKEY SCHOOL
         </p>

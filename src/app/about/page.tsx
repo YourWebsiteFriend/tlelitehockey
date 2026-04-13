@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { PageHero } from "@/components/layout/PageHero";
 import { SectionWrapper } from "@/components/shared/SectionWrapper";
 import { TestimonialsSection } from "@/components/shared/TestimonialsSection";
 import { CtaBannerSection } from "@/components/home/CtaBannerSection";
+import { CoachesGrid } from "@/components/about/CoachesGrid";
 
 export const metadata: Metadata = {
   title: "About TL Elite Hockey",
@@ -15,13 +15,13 @@ const coaches = [
   {
     name: "BRENDAN HEAYDEN",
     role: "Founder & Head Coach",
-    photo: "/images/DSC02632.jpg",
+    photo: "/images/DSC02705.jpg",
     bio: "Brendan Heayden founded TL Elite Hockey School in 2021 with one goal: give young players the same level of instruction and intensity that shaped his own career. A lifelong hockey player with deep roots in New England hockey, Brendan brings a competitive mindset and a player-first approach to every session.",
   },
   {
     name: "MITCH WALINSKI",
     role: "Assistant Coach",
-    photo: "/images/DSC02705.jpg",
+    photo: "/images/DSC02709.jpg",
     bio: "Mitch Walinski joined TL Elite as assistant coach and quickly became an integral part of the program's identity. Known for his ability to connect with players of all ages, Mitch brings energy and technical precision to every session.",
   },
 ];
@@ -33,6 +33,8 @@ export default function AboutPage() {
         heading="OUR STORY"
         body="Building elite youth hockey players through intensity, discipline, and precision."
         backgroundImage="/images/DSC02709.jpg"
+        ctaLabel="Book a Session"
+        ctaHref="/book"
       />
 
       {/* Coaches */}
@@ -44,40 +46,13 @@ export default function AboutPage() {
           MEET THE TEAM
         </h2>
 
-        <div className="grid md:grid-cols-2 gap-8">
-          {coaches.map((coach) => (
-            <div
-              key={coach.name}
-              className="bg-black rounded-2xl overflow-hidden border border-white/10"
-            >
-              {/* Coach photo */}
-              <div className="relative h-80 bg-[#0a0a0a] overflow-hidden">
-                <Image
-                  src={coach.photo}
-                  alt={`${coach.name} — TL Elite Hockey`}
-                  fill
-                  className="object-cover object-top"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-              </div>
-              {/* Info */}
-              <div className="p-8">
-                <h3 className="font-black uppercase text-white text-2xl">
-                  {coach.name}
-                </h3>
-                <p className="text-[#4CAF50] text-sm uppercase tracking-wide mt-1 mb-4">
-                  {coach.role}
-                </p>
-                <p className="text-white/70 text-sm leading-relaxed">{coach.bio}</p>
-              </div>
-            </div>
-          ))}
-        </div>
+        <CoachesGrid coaches={coaches} />
       </SectionWrapper>
 
       {/* Mission Statement */}
+      <div className="w-full h-px bg-white/10" />
       <SectionWrapper className="bg-black">
-        <span className="block text-[#4CAF50] text-[120px] leading-none font-serif text-center opacity-20 select-none">
+        <span className="block text-[#F78E2B] text-[120px] leading-none font-serif text-center opacity-15 select-none">
           &ldquo;
         </span>
         <h2 className="section-heading text-white text-4xl sm:text-5xl lg:text-6xl text-center -mt-8">

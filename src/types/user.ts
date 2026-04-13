@@ -6,6 +6,7 @@ export const UserProfileSchema = z.object({
   email: z.string().email(),
   pro_status: z.enum(["free", "member"]).default("free"),
   loyalty_points: z.number().int().nonnegative().default(0),
+  wix_member_id: z.string().nullable().optional(),
   created_at: z.string(),
 });
 

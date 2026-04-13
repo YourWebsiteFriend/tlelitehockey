@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { NavDropdown } from "./NavDropdown";
+import { NavAuthButton } from "./NavAuthButton";
 
 const leftNavLinks = [
   { label: "About", href: "/about" },
@@ -145,16 +146,7 @@ export function Navbar() {
             </Link>
           ))}
 
-          <Link
-            href="/auth/login"
-            className={cn(
-              "text-sm font-medium px-4 py-2 rounded-full border border-white/40",
-              "text-white hover:border-white hover:bg-white/10 transition-colors duration-150",
-              "focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black"
-            )}
-          >
-            Log In
-          </Link>
+          <NavAuthButton />
         </div>
 
         {/* ── Mobile Hamburger ─────────────────────────────────────── */}
@@ -194,17 +186,7 @@ export function Navbar() {
             ))}
 
             <div className="mt-2 pt-2 border-t border-white/10">
-              <Link
-                href="/auth/login"
-                onClick={() => setMobileOpen(false)}
-                className={cn(
-                  "block text-center px-4 py-3 rounded-full border border-white/40 text-sm font-medium",
-                  "text-white hover:border-white hover:bg-white/10 transition-colors duration-150",
-                  "focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
-                )}
-              >
-                Log In
-              </Link>
+              <NavAuthButton mobile />
             </div>
           </div>
         </div>

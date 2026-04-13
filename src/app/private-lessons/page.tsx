@@ -33,7 +33,7 @@ export default function PrivateLessonsPage() {
       <PageHero
         heading="PRIVATE LESSONS"
         body="One coach. One player. Maximum development."
-        backgroundImage="/images/DSC02709.jpg"
+        backgroundImage="/images/DSC02646.jpg"
       />
 
       {/* 3-step process */}
