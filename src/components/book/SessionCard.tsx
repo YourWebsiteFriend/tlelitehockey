@@ -14,28 +14,18 @@ function seasonBadge(season: Session["season"]): string {
     case "Drop Ins":
       return "bg-white/10 text-white/70";
     case "Spring 2026":
-      return "bg-[#4CAF50]/20 text-[#4CAF50]";
+      return "bg-white/10 text-white/60";
     case "Summer 2026":
-      return "bg-[#F78E2B]/20 text-[#F78E2B]";
+      return "bg-white/10 text-white/60";
     case "Clinics":
-      return "bg-blue-900/40 text-blue-400";
+      return "bg-white/10 text-white/60";
   }
-}
-
-function availabilityBadge(
-  spots: number
-): { label: string; cls: string } | null {
-  if (spots === 0) return { label: "SOLD OUT", cls: "bg-red-900/40 text-red-400" };
-  if (spots <= 3) return { label: `${spots} LEFT`, cls: "bg-red-900/40 text-red-400" };
-  if (spots <= 6) return { label: "FILLING FAST", cls: "bg-yellow-900/40 text-yellow-400" };
-  return null;
 }
 
 export function SessionCard({ session }: Props) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
 
-  const avail = availabilityBadge(session.spots_left);
   const soldOut = session.spots_left === 0;
 
   const handleBook = async () => {
@@ -64,13 +54,6 @@ export function SessionCard({ session }: Props) {
         >
           {session.season}
         </span>
-        {avail && (
-          <span
-            className={`text-xs font-bold uppercase px-3 py-1 rounded-full ${avail.cls}`}
-          >
-            {avail.label}
-          </span>
-        )}
       </div>
 
       {/* Name */}
