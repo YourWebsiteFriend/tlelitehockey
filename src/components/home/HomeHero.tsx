@@ -56,7 +56,7 @@ export function HomeHero() {
             src={slide.src}
             alt={slide.alt}
             fill
-            className="object-cover object-center"
+            className="object-cover object-[center_25%]"
             priority={i === 0}
             sizes="100vw"
           />
