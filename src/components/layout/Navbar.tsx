@@ -9,8 +9,11 @@ import { cn } from "@/lib/utils";
 import { NavDropdown } from "./NavDropdown";
 import { NavAuthButton } from "./NavAuthButton";
 
-const leftNavLinks = [
+const preDropdownLinks = [
   { label: "About", href: "/about" },
+];
+
+const postDropdownLinks = [
   { label: "Clinics", href: "/clinics" },
   { label: "Private Lessons", href: "/private-lessons" },
   { label: "Schedule", href: "/schedule" },
@@ -63,7 +66,7 @@ export function Navbar() {
       >
         {/* ── Desktop Left Links ───────────────────────────────────── */}
         <div className="hidden lg:flex items-center gap-6">
-          {leftNavLinks.map((link) => (
+          {preDropdownLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
@@ -112,6 +115,22 @@ export function Navbar() {
               <NavDropdown onItemClick={() => setDropdownOpen(false)} />
             )}
           </div>
+
+          {postDropdownLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={cn(
+                "text-sm font-medium transition-colors duration-150",
+                "focus:outline-none focus-visible:underline",
+                isActive(link.href)
+                  ? "text-white underline underline-offset-4"
+                  : "text-white/80 hover:text-white hover:underline hover:underline-offset-4"
+              )}
+            >
+              {link.label}
+            </Link>
+          ))}
         </div>
 
         {/* ── Center Logo ──────────────────────────────────────────── */}
