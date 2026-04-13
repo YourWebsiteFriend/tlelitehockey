@@ -11,17 +11,19 @@ import { NavAuthButton } from "./NavAuthButton";
 
 const leftNavLinks = [
   { label: "About", href: "/about" },
+  { label: "Clinics", href: "/clinics" },
+  { label: "Schedule", href: "/schedule" },
 ];
 
 const rightNavLinks = [
-  { label: "Private Lessons", href: "/private-lessons" },
   { label: "Contact", href: "/contact" },
 ];
 
 const mobileLinks = [
   { label: "About", href: "/about" },
-  { label: "Book Sessions", href: "/book" },
+  { label: "Schedule", href: "/schedule" },
   { label: "Clinics", href: "/clinics" },
+  { label: "Book Sessions", href: "/book" },
   { label: "Private Lessons", href: "/private-lessons" },
   { label: "Contact", href: "/contact" },
 ];
@@ -146,6 +148,12 @@ export function Navbar() {
             </Link>
           ))}
 
+          <Link
+            href="/book"
+            className="text-sm font-bold px-4 py-2 rounded-full border border-[#4CAF50] text-[#4CAF50] hover:bg-[#4CAF50]/10 transition-colors duration-150"
+          >
+            Book Now
+          </Link>
           <NavAuthButton />
         </div>
 

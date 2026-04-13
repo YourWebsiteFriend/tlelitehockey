@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 
 const dropdownItems = [
   { label: "Book Sessions", href: "/book" },
-  { label: "Clinics", href: "/clinics" },
+  { label: "Private Lessons", href: "/private-lessons" },
 ];
 
 interface NavDropdownProps {
