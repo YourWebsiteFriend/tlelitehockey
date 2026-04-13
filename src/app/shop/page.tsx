@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import type { Metadata } from "next";
 import { ShopClient } from "@/components/shop/ShopClient";
 import { getProducts } from "@/services/products.service";
