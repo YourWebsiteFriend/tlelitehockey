@@ -12,7 +12,12 @@ export const metadata: Metadata = {
     "Book drop-in sessions, Spring 2026 packages, or Summer 2026 packages. Small-group training for ages 5–18 at Thayer Sports Center, Braintree MA.",
 };
 
-export default async function BookPage() {
+export default async function BookPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ tab?: string }>;
+}) {
+  const { tab } = await searchParams;
   const sessions = await getSessionsBySeason();
 
   return (
@@ -23,7 +28,7 @@ export default async function BookPage() {
         backgroundImage="/images/DSC02667.jpg"
       />
       <SectionWrapper className="bg-black">
-        <SessionsBoard sessions={sessions} />
+        <SessionsBoard sessions={sessions} defaultTab={tab} />
       </SectionWrapper>
     </>
   );

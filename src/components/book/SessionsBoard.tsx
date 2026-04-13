@@ -8,6 +8,7 @@ import type { Session, SessionSeason } from "@/types/session";
 interface Props {
   sessions: Session[];
   hideFilters?: boolean;
+  defaultTab?: string;
 }
 
 const TABS: Array<{ label: string; value: string }> = [
@@ -17,8 +18,12 @@ const TABS: Array<{ label: string; value: string }> = [
   { label: "Summer 2026", value: "Summer 2026" },
 ];
 
-export function SessionsBoard({ sessions, hideFilters = false }: Props) {
-  const [activeTab, setActiveTab] = useState("all");
+const VALID_TABS = TABS.map((t) => t.value);
+
+export function SessionsBoard({ sessions, hideFilters = false, defaultTab }: Props) {
+  const [activeTab, setActiveTab] = useState(
+    defaultTab && VALID_TABS.includes(defaultTab) ? defaultTab : "all"
+  );
 
   const filtered =
     activeTab === "all"

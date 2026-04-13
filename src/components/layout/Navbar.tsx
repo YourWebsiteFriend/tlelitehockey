@@ -16,6 +16,7 @@ const leftNavLinks = [
 ];
 
 const rightNavLinks = [
+  { label: "Private Lessons", href: "/private-lessons" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -23,7 +24,8 @@ const mobileLinks = [
   { label: "About", href: "/about" },
   { label: "Schedule", href: "/schedule" },
   { label: "Clinics", href: "/clinics" },
-  { label: "Book Sessions", href: "/book" },
+  { label: "Sessions", href: "/book?tab=Drop+Ins" },
+  { label: "Packages", href: "/packages" },
   { label: "Private Lessons", href: "/private-lessons" },
   { label: "Contact", href: "/contact" },
 ];

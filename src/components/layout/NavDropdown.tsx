@@ -5,8 +5,8 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 
 const dropdownItems = [
-  { label: "Book Sessions", href: "/book" },
-  { label: "Private Lessons", href: "/private-lessons" },
+  { label: "Sessions", href: "/book?tab=Drop+Ins" },
+  { label: "Packages", href: "/packages" },
 ];
 
 interface NavDropdownProps {
