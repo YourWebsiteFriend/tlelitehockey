@@ -9,8 +9,8 @@ export function MissionSection() {
         {/* Left: real action photo */}
         <div className="relative min-h-[300px] lg:min-h-0 lg:self-stretch rounded-2xl overflow-hidden bg-[#0a0a0a]">
           <Image
-            src="/images/DSC02632.jpg"
-            alt="Coach Brendan Heayden demonstrating on ice"
+            src="/images/DSC02694.jpg"
+            alt="Young TL Elite Hockey player focused and ready on the ice"
             fill
             className="object-cover object-top"
             sizes="(max-width: 1024px) 100vw, 50vw"
