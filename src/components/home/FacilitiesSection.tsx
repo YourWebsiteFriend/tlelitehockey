@@ -10,11 +10,11 @@ const facilities = [
     mapsUrl: "https://maps.google.com/maps?q=Thayer+Sports+Center+1515+Washington+St+Braintree+MA",
   },
   {
-    name: "Thayer Ice Arena",
-    address: "1515 Washington St, Braintree MA",
+    name: "Thayer Sports Center",
+    address: "Sheet 2 — 1515 Washington St, Braintree MA",
     image: "/images/braintree-2.jpg",
-    alt: "Thayer Ice Arena in Braintree MA",
-    mapsUrl: "https://maps.google.com/maps?q=Thayer+Ice+Arena+1515+Washington+St+Braintree+MA",
+    alt: "Second ice sheet at Thayer Sports Center in Braintree MA",
+    mapsUrl: "https://maps.google.com/maps?q=Thayer+Sports+Center+1515+Washington+St+Braintree+MA",
   },
   {
     name: "Gallo Ice Arena",

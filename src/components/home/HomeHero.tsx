@@ -73,8 +73,7 @@ export function HomeHero() {
         </p>
 
         <h1 className="font-black uppercase tracking-tight leading-none">
-          <span className="block text-3xl sm:text-6xl lg:text-8xl text-white">ELEVATE YOUR GAME.</span>
-          <span className="block text-2xl sm:text-5xl lg:text-6xl text-white/80 font-bold mt-2 sm:mt-3">TRAIN WITH TL ELITE.</span>
+          <span className="block text-3xl sm:text-6xl lg:text-8xl text-white">TRAIN WITH TL ELITE.</span>
         </h1>
 
         <p className="text-white/70 text-base sm:text-lg max-w-xl mx-auto mt-5 sm:mt-6 leading-relaxed px-2 sm:px-0">

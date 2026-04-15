@@ -75,7 +75,7 @@ export function ServicesSection() {
               <div className="flex flex-wrap gap-3 mt-4">
                 <Link
                   href={service.learnHref}
-                  className="rounded-full border border-white/50 px-4 py-2 text-xs font-bold uppercase tracking-wide text-white hover:border-white hover:bg-white/10 transition-colors"
+                  className="rounded-full bg-[#F78E2B] px-4 py-2 text-xs font-bold uppercase tracking-wide text-white hover:bg-[#e07e22] transition-colors"
                 >
                   Learn More
                 </Link>

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <>
-      <PageHero heading="GET IN TOUCH" backgroundImage="/images/braintree-2.jpg" />
+      <PageHero heading="GET IN TOUCH" backgroundImage="/images/braintree-2.jpg" objectPosition="center 55%" />
 
       <SectionWrapper className="bg-black">
         <div className="grid lg:grid-cols-3 gap-10 lg:gap-16">

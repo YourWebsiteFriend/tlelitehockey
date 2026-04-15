@@ -18,7 +18,7 @@ export function StatsBar() {
               }`}
             >
               <p className="text-3xl font-black text-[#F78E2B]">{stat.num}</p>
-              <p className="text-xs uppercase tracking-widest text-white/50 mt-1">{stat.label}</p>
+              <p className="text-xs uppercase tracking-widest text-white mt-1">{stat.label}</p>
             </div>
           ))}
         </div>
