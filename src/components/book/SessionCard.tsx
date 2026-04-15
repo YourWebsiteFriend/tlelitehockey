@@ -10,19 +10,32 @@ interface Props {
   session: Session;
 }
 
-const SEASON_IMAGE: Record<Session["season"], { src: string; position: string }> = {
-  "Drop Ins":    { src: "/images/DSC02739.jpg", position: "center 40%" },
-  "Spring 2026": { src: "/images/DSC02750.jpg", position: "center 30%" },
-  "Summer 2026": { src: "/images/DSC02758.jpg", position: "center 35%" },
-  "Clinics":     { src: "/images/DSC02673.jpg", position: "center 20%" },
+const DAY_IMAGE: Record<string, { src: string; position: string }> = {
+  Mon: { src: "/images/DSC02687.jpg", position: "center 30%" },
+  Tue: { src: "/images/DSC02750.jpg", position: "center 30%" },
+  Wed: { src: "/images/DSC02739.jpg", position: "center 40%" },
+  Thu: { src: "/images/DSC02680.jpg", position: "center 35%" },
+  Sat: { src: "/images/DSC02758.jpg", position: "center 35%" },
+  Sun: { src: "/images/DSC02740.jpg", position: "center 40%" },
 };
+
+const FALLBACK_IMAGE = { src: "/images/DSC02673.jpg", position: "center 20%" };
+
+function getCardImage(day: string | null): { src: string; position: string } {
+  if (!day) return FALLBACK_IMAGE;
+  const order = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  for (const d of order) {
+    if (day.includes(d)) return DAY_IMAGE[d] ?? FALLBACK_IMAGE;
+  }
+  return FALLBACK_IMAGE;
+}
 
 export function SessionCard({ session }: Props) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
 
   const soldOut = session.spots_left === 0;
-  const img = SEASON_IMAGE[session.season];
+  const img = getCardImage(session.day);
 
   const handleBook = async () => {
     if (soldOut || loading) return;
