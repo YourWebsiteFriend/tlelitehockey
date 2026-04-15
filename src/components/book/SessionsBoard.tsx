@@ -42,12 +42,12 @@ export function SessionsBoard({ sessions, hideFilters = false, defaultTab }: Pro
 
   return (
     <Tabs value={activeTab} onValueChange={setActiveTab}>
-      <TabsList className="bg-transparent border-b border-white/10 w-full justify-start rounded-none p-0 mb-10 h-auto overflow-x-auto">
+      <TabsList className="bg-transparent border-b border-white/10 w-full justify-start rounded-none p-0 mb-10 h-auto overflow-x-auto gap-1">
         {TABS.map((tab) => (
           <TabsTrigger
             key={tab.value}
             value={tab.value}
-            className="rounded-none border-b-2 border-b-transparent data-[state=active]:border-b-[#F78E2B] data-[state=active]:text-white text-white/50 px-6 pb-4 text-sm font-bold uppercase tracking-wide bg-transparent hover:text-white transition-colors data-[state=active]:bg-transparent data-[state=active]:shadow-none"
+            className="rounded-full border-none bg-transparent text-white/50 px-5 py-2 mb-3 text-sm font-bold uppercase tracking-wide transition-colors hover:text-white hover:bg-white/5 data-active:bg-[#F78E2B]/15 data-active:text-[#F78E2B] data-active:shadow-none after:hidden"
           >
             {tab.label}
           </TabsTrigger>

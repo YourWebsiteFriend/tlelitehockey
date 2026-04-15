@@ -15,7 +15,7 @@ const coaches = [
   {
     name: "BRENDAN HEAYDEN",
     role: "Founder & Head Coach",
-    photo: "/images/DSC02705.jpg",
+    photo: "/images/DSC02646.jpg",
     bio: "Brendan Heayden founded TL Elite Hockey School in 2021 with one goal: give young players the same level of instruction and intensity that shaped his own career. A lifelong hockey player with deep roots in New England hockey, Brendan brings a competitive mindset and a player-first approach to every session.",
   },
   {
