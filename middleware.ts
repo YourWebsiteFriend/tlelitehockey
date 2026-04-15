@@ -55,7 +55,11 @@ export async function middleware(request: NextRequest) {
 
   // Admin guard: /admin/* requires an authenticated admin email.
   // /admin/login is always accessible so admins can sign in.
-  if (pathname.startsWith("/admin") && pathname !== "/admin/login") {
+  if (
+    pathname.startsWith("/admin") &&
+    pathname !== "/admin/login" &&
+    !pathname.startsWith("/admin/auth/callback")
+  ) {
     const adminEmails = (process.env.ADMIN_EMAILS ?? "")
       .split(",")
       .map((e) => e.trim().toLowerCase())

@@ -1,5 +1,6 @@
 'use server';
 
+import { z } from 'zod';
 import { requireAdminUser } from '@/lib/admin-guard';
 import {
   fetchAdminStats,
@@ -11,11 +12,13 @@ import {
   fetchAllMessages,
   fetchMessageById,
   markMessageRead,
+  markMessageReplied,
   fetchEmailSignups,
   fetchSiteContent,
   upsertSiteContent,
   fetchAnalytics,
 } from '@/services/admin.service';
+import { sendReplyEmail } from '@/services/email.service';
 import {
   SessionCreateSchema,
   SessionUpdateSchema,
@@ -253,5 +256,36 @@ export async function getAnalytics(
     const message = err instanceof Error ? err.message : 'Failed to fetch analytics';
     console.error('[admin.actions] getAnalytics:', err);
     return { success: false, error: message };
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Reply to Message
+// ---------------------------------------------------------------------------
+
+export async function sendAdminReply(
+  messageId: string,
+  input: unknown
+): Promise<ActionResult<void>> {
+  try {
+    await requireAdminUser();
+
+    const parsed = z.object({
+      to: z.string().email(),
+      subject: z.string().min(1),
+      body: z.string().min(1),
+    }).safeParse(input);
+
+    if (!parsed.success) {
+      return { success: false, error: parsed.error.issues[0]?.message ?? 'Invalid input' };
+    }
+
+    await sendReplyEmail(parsed.data);
+    await markMessageReplied(messageId);
+
+    return { success: true, data: undefined };
+  } catch (err) {
+    console.error('[admin.actions] sendAdminReply error:', err);
+    return { success: false, error: 'Failed to send reply.' };
   }
 }

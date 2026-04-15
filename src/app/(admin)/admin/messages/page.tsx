@@ -78,11 +78,17 @@ export default async function AdminMessagesPage() {
                       </Link>
                     </td>
                     <td className="px-4 py-3">
-                      <Link href={`/admin/messages/${m.id}`} className="block">
-                        {m.is_read ? (
-                          <span className="text-white/30 text-xs">Read</span>
-                        ) : (
-                          <span className="text-[#F78E2B] text-xs font-medium">Unread</span>
+                      <Link href={`/admin/messages/${m.id}`} className="block space-y-1">
+                        {!m.is_read && (
+                          <span className="text-[#F78E2B] text-xs font-medium block">Unread</span>
+                        )}
+                        {m.is_read && !m.replied_at && (
+                          <span className="text-white/30 text-xs block">Read</span>
+                        )}
+                        {m.replied_at && (
+                          <span className="bg-[#4CAF50]/15 text-[#4CAF50] text-xs px-2 py-0.5 rounded-full inline-block">
+                            Replied
+                          </span>
                         )}
                       </Link>
                     </td>

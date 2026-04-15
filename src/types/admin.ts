@@ -40,6 +40,7 @@ export const AdminMessageSchema = z.object({
   form_type: z.enum(['contact', 'private_lessons']),
   data: z.record(z.string(), z.unknown()),
   is_read: z.boolean(),
+  replied_at: z.string().nullable(),
   created_at: z.string(),
 });
 

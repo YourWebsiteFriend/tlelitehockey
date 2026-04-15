@@ -199,7 +199,7 @@ export async function fetchAllMessages(filters?: {
 
   let query = supabase
     .from('contact_submissions')
-    .select('id, form_type, data, is_read, created_at')
+    .select('id, form_type, data, is_read, replied_at, created_at')
     .order('created_at', { ascending: false });
 
   if (filters?.formType) {
@@ -219,7 +219,7 @@ export async function fetchMessageById(id: string): Promise<AdminMessage | null>
 
   const { data, error } = await supabase
     .from('contact_submissions')
-    .select('id, form_type, data, is_read, created_at')
+    .select('id, form_type, data, is_read, replied_at, created_at')
     .eq('id', id)
     .single();
 
@@ -236,6 +236,17 @@ export async function markMessageRead(id: string): Promise<void> {
   const { error } = await supabase
     .from('contact_submissions')
     .update({ is_read: true })
+    .eq('id', id);
+
+  if (error) throw error;
+}
+
+export async function markMessageReplied(id: string): Promise<void> {
+  const supabase = await getSupabaseServiceClient();
+
+  const { error } = await supabase
+    .from('contact_submissions')
+    .update({ replied_at: new Date().toISOString() })
     .eq('id', id);
 
   if (error) throw error;

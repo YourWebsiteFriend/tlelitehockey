@@ -322,3 +322,8 @@ END $$;
 -- CONTACT_SUBMISSIONS — add is_read column
 -- ============================================================
 ALTER TABLE public.contact_submissions ADD COLUMN IF NOT EXISTS is_read boolean NOT NULL DEFAULT false;
+
+-- ============================================================
+-- CONTACT_SUBMISSIONS — add reply tracking
+-- ============================================================
+ALTER TABLE public.contact_submissions ADD COLUMN IF NOT EXISTS replied_at timestamptz DEFAULT NULL;

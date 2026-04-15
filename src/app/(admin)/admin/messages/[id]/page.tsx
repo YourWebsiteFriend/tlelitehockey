@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getMessageById } from '@/actions/admin.actions';
 import { MarkReadButton } from '@/components/admin/MarkReadButton';
+import { ReplyComposer } from '@/components/admin/ReplyComposer';
 
 export const metadata = { title: 'Message | TL Elite Admin' };
 
@@ -12,6 +13,14 @@ function formatDate(iso: string) {
     year: 'numeric',
     hour: '2-digit',
     minute: '2-digit',
+  });
+}
+
+function formatRepliedDate(iso: string) {
+  return new Date(iso).toLocaleDateString('en-US', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
   });
 }
 
@@ -33,6 +42,15 @@ export default async function MessageDetailPage({
 
   const message = result.data;
 
+  const data = message.data as Record<string, unknown>;
+  const contactEmail = typeof data.email === 'string' ? data.email : '';
+  const contactName =
+    typeof data.name === 'string'
+      ? data.name
+      : typeof data.firstName === 'string'
+      ? data.firstName
+      : 'there';
+
   return (
     <div className="space-y-6 max-w-2xl">
       <div className="flex items-center gap-4">
@@ -42,19 +60,27 @@ export default async function MessageDetailPage({
       </div>
 
       <div className="bg-[#111111] border border-white/10 rounded-xl p-6 space-y-6">
-        <div className="flex items-start justify-between gap-4">
+        <div className="flex items-start justify-between gap-4 flex-wrap">
           <div>
             <p className="text-white/40 text-xs uppercase tracking-widest mb-1">
               {message.form_type.replace('_', ' ')}
             </p>
             <p className="text-white/40 text-sm">{formatDate(message.created_at)}</p>
           </div>
-          {!message.is_read && <MarkReadButton messageId={message.id} />}
-          {message.is_read && (
-            <span className="text-white/20 text-xs border border-white/10 px-3 py-1.5 rounded-full">
-              Read
-            </span>
-          )}
+
+          <div className="flex items-center gap-2 flex-wrap">
+            {message.replied_at && (
+              <span className="bg-[#4CAF50]/15 text-[#4CAF50] text-xs px-3 py-1.5 rounded-full font-medium">
+                Replied {formatRepliedDate(message.replied_at)}
+              </span>
+            )}
+            {!message.is_read && <MarkReadButton messageId={message.id} />}
+            {message.is_read && !message.replied_at && (
+              <span className="text-white/20 text-xs border border-white/10 px-3 py-1.5 rounded-full">
+                Read
+              </span>
+            )}
+          </div>
         </div>
 
         <div className="border-t border-white/10 pt-6 space-y-4">
@@ -68,6 +94,15 @@ export default async function MessageDetailPage({
           ))}
         </div>
       </div>
+
+      <ReplyComposer
+        messageId={message.id}
+        contactEmail={contactEmail}
+        contactName={contactName}
+        formType={message.form_type}
+        alreadyReplied={!!message.replied_at}
+        repliedAt={message.replied_at}
+      />
     </div>
   );
 }

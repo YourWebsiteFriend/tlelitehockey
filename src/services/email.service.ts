@@ -110,6 +110,27 @@ export async function sendPrivateLessonsInquiry(data: PrivateLessonsFormData): P
   }
 }
 
+export async function sendReplyEmail({
+  to,
+  subject,
+  body,
+  fromName = 'Brendan Heayden',
+}: {
+  to: string;
+  subject: string;
+  body: string;
+  fromName?: string;
+}): Promise<void> {
+  const { error } = await resend.emails.send({
+    from: `${fromName} <brendan@tlelitehockey.com>`,
+    to,
+    subject,
+    html: `<div style="font-family:sans-serif;max-width:600px;margin:0 auto"><p style="white-space:pre-wrap">${body.replace(/\n/g, '<br>')}</p><hr style="border:1px solid #eee;margin-top:32px"><p style="color:#999;font-size:12px">TL Elite Hockey School — tlelitehockey.com</p></div>`,
+    text: body,
+  });
+  if (error) throw error;
+}
+
 function escapeHtml(str: string): string {
   return str
     .replace(/&/g, '&amp;')
