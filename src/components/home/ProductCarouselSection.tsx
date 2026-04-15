@@ -24,12 +24,12 @@ function badgeClass(badge: ProductBadge): string {
 export function ProductCarouselSection({ products }: Props) {
   return (
     <SectionWrapper className="bg-black">
-      <h2 className="section-heading text-white text-3xl sm:text-4xl text-center mb-2">
+      <h2 className="section-heading text-white text-2xl sm:text-4xl text-center mb-2">
         SHOP TL GEAR
       </h2>
-      <span className="block w-12 h-1 bg-[#F78E2B] mx-auto mt-3 mb-14" />
+      <span className="block w-12 h-1 bg-[#F78E2B] mx-auto mt-3 mb-10 sm:mb-14" />
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 px-1 sm:px-0">
         {products.map((product) => (
           <div
             key={product.id}

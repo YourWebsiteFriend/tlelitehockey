@@ -18,7 +18,7 @@ export function CoachesGrid({ coaches }: CoachesGridProps) {
   const { ref, inView } = useInView();
 
   return (
-    <div ref={ref} className="grid md:grid-cols-2 gap-8">
+    <div ref={ref} className="grid md:grid-cols-2 gap-6 sm:gap-8 px-1 sm:px-0">
       {coaches.map((coach, i) => (
         <div
           key={coach.name}
@@ -26,7 +26,7 @@ export function CoachesGrid({ coaches }: CoachesGridProps) {
           style={{ transitionDelay: inView ? `${i * 150}ms` : "0ms" }}
         >
           {/* Coach photo */}
-          <div className="relative h-80 bg-[#0a0a0a] overflow-hidden">
+          <div className="relative h-64 sm:h-80 bg-[#0a0a0a] overflow-hidden">
             <Image
               src={coach.photo}
               alt={`${coach.name} — TL Elite Hockey`}
@@ -36,7 +36,7 @@ export function CoachesGrid({ coaches }: CoachesGridProps) {
             />
           </div>
           {/* Info */}
-          <div className="p-8">
+          <div className="p-6 sm:p-8">
             <h3 className="font-black uppercase text-white text-2xl">
               {coach.name}
             </h3>

@@ -72,27 +72,27 @@ export function HomeHero() {
           TL ELITE HOCKEY SCHOOL
         </p>
 
-        <h1 className="font-black uppercase text-4xl sm:text-6xl lg:text-8xl text-white tracking-tight leading-none">
+        <h1 className="font-black uppercase text-3xl sm:text-6xl lg:text-8xl text-white tracking-tight leading-none">
           TRAIN WITH
           <br />
           TL ELITE
         </h1>
 
-        <p className="text-white/70 text-lg max-w-xl mx-auto mt-6 leading-relaxed">
+        <p className="text-white/70 text-base sm:text-lg max-w-xl mx-auto mt-5 sm:mt-6 leading-relaxed px-2 sm:px-0">
           Elite small-group youth hockey training in Greater Boston. Develop
           your skills, elevate your game.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center mt-10">
+        <div className="flex flex-row flex-wrap gap-3 sm:gap-4 justify-center mt-8 sm:mt-10">
           <Link
             href="/book?season=Spring+2026"
-            className="bg-[#4CAF50] rounded-full px-8 py-4 font-bold text-sm uppercase tracking-wide text-white hover:bg-[#43A047] transition-colors"
+            className="bg-[#4CAF50] rounded-full px-7 sm:px-8 py-3 sm:py-4 font-bold text-sm uppercase tracking-wide text-white hover:bg-[#43A047] transition-colors"
           >
             Spring 2026
           </Link>
           <Link
             href="/book?season=Summer+2026"
-            className="bg-[#F78E2B] rounded-full px-8 py-4 font-bold text-sm uppercase tracking-wide text-white hover:bg-[#e07e22] transition-colors"
+            className="bg-[#F78E2B] rounded-full px-7 sm:px-8 py-3 sm:py-4 font-bold text-sm uppercase tracking-wide text-white hover:bg-[#e07e22] transition-colors"
           >
             Summer 2026
           </Link>

@@ -34,14 +34,14 @@ export default async function ClinicsPage() {
       {/* Stats bar */}
       <SectionWrapper className="bg-[#111111]">
         <AnimateIn animation="fade-up">
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-3 gap-3 sm:gap-6 px-1 sm:px-0">
             {stats.map((stat) => (
               <div
                 key={stat.label}
-                className="bg-black rounded-2xl p-8 text-center"
+                className="bg-black rounded-2xl p-5 sm:p-8 text-center"
               >
-                <p className="text-[#F78E2B] text-5xl font-black">{stat.value}</p>
-                <p className="text-white/60 uppercase text-sm tracking-wide mt-2">
+                <p className="text-[#F78E2B] text-3xl sm:text-5xl font-black">{stat.value}</p>
+                <p className="text-white/60 uppercase text-xs sm:text-sm tracking-wide mt-2">
                   {stat.label}
                 </p>
               </div>
@@ -53,7 +53,7 @@ export default async function ClinicsPage() {
       {/* Sessions */}
       <SectionWrapper className="bg-black">
         <AnimateIn animation="fade-up">
-          <h2 className="section-heading text-white text-3xl sm:text-4xl mb-10">
+          <h2 className="section-heading text-white text-2xl sm:text-4xl mb-8 sm:mb-10">
             UPCOMING CLINICS
           </h2>
         </AnimateIn>

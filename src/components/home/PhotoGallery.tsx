@@ -21,10 +21,10 @@ export function PhotoGallery() {
       <p className="text-[#F78E2B] text-xs uppercase tracking-[0.3em] text-center mb-3 font-bold">
         ON THE ICE
       </p>
-      <h2 className="section-heading text-white text-3xl sm:text-4xl text-center mb-10">
+      <h2 className="section-heading text-white text-2xl sm:text-4xl text-center mb-8 sm:mb-10">
         TRAINING IN ACTION
       </h2>
-      <div ref={ref} className="grid grid-cols-2 md:grid-cols-3 gap-2 sm:gap-3">
+      <div ref={ref} className="grid grid-cols-2 md:grid-cols-3 gap-2 sm:gap-3 px-1 sm:px-0">
         {photos.map((photo, i) => (
           <div
             key={photo.src}

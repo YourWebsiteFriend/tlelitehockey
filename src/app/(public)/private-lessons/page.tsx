@@ -40,10 +40,10 @@ export default function PrivateLessonsPage() {
 
       {/* 3-step process */}
       <SectionWrapper className="bg-[#111111]">
-        <h2 className="section-heading text-white text-3xl sm:text-4xl text-center mb-14">
+        <h2 className="section-heading text-white text-2xl sm:text-4xl text-center mb-10 sm:mb-14">
           HOW IT WORKS
         </h2>
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-8 px-1 sm:px-0">
           {steps.map((step, i) => (
             <AnimateIn
               key={step.number}
@@ -68,7 +68,7 @@ export default function PrivateLessonsPage() {
 
       {/* Inquiry Form */}
       <SectionWrapper className="bg-black">
-        <h2 className="section-heading text-white text-3xl sm:text-4xl text-center mb-14">
+        <h2 className="section-heading text-white text-2xl sm:text-4xl text-center mb-10 sm:mb-14">
           REQUEST A SESSION
         </h2>
         <PrivateLessonsForm />

@@ -55,13 +55,13 @@ export function PricingSection() {
       <p className="text-[#F78E2B] text-xs uppercase tracking-[0.3em] text-center mb-3 font-bold">
         PRICING
       </p>
-      <h2 className="section-heading text-white text-3xl sm:text-4xl text-center mb-4">
+      <h2 className="section-heading text-white text-2xl sm:text-4xl text-center mb-4">
         CHOOSE YOUR PROGRAM
       </h2>
-      <p className="text-white/50 text-center mb-12 text-sm">
+      <p className="text-white/50 text-center mb-10 sm:mb-12 text-sm">
         All sessions run at Thayer Sports Center, Braintree MA
       </p>
-      <div ref={ref} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div ref={ref} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 px-1 sm:px-0">
         {plans.map((plan, i) => (
           <div
             key={plan.name}

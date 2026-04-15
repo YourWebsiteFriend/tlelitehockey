@@ -183,7 +183,8 @@ export function Navbar() {
           type="button"
           className={cn(
             "lg:hidden p-2 rounded-md text-white/80 hover:text-white",
-            "focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+            "focus:outline-none focus-visible:ring-2 focus-visible:ring-white",
+            "min-h-[44px] min-w-[44px] flex items-center justify-center"
           )}
           onClick={() => setMobileOpen((v) => !v)}
           aria-expanded={mobileOpen}

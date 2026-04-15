@@ -17,7 +17,7 @@ export default function ContactPage() {
       <PageHero heading="GET IN TOUCH" backgroundImage="/images/braintree-2.jpg" />
 
       <SectionWrapper className="bg-black">
-        <div className="grid lg:grid-cols-3 gap-16">
+        <div className="grid lg:grid-cols-3 gap-10 lg:gap-16">
           {/* Form */}
           <AnimateIn animation="fade-left" className="lg:col-span-2">
             <h2 className="section-heading text-white text-2xl mb-10">

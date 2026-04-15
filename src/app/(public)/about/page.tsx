@@ -43,7 +43,7 @@ export default function AboutPage() {
         <p className="text-[#F78E2B] text-xs uppercase tracking-[0.3em] text-center mb-3">
           THE COACHES
         </p>
-        <h2 className="section-heading text-white text-3xl sm:text-4xl text-center mb-14">
+        <h2 className="section-heading text-white text-2xl sm:text-4xl text-center mb-10 sm:mb-14">
           MEET THE TEAM
         </h2>
 
@@ -53,17 +53,17 @@ export default function AboutPage() {
       {/* Mission Statement */}
       <div className="w-full h-px bg-white/10" />
       <SectionWrapper className="bg-black">
-        <span className="block text-[#F78E2B] text-[120px] leading-none font-serif text-center opacity-15 select-none">
+        <span className="block text-[#F78E2B] text-[80px] sm:text-[120px] leading-none font-serif text-center opacity-15 select-none">
           &ldquo;
         </span>
-        <h2 className="section-heading text-white text-4xl sm:text-5xl lg:text-6xl text-center -mt-8">
+        <h2 className="section-heading text-white text-3xl sm:text-5xl lg:text-6xl text-center -mt-6 sm:-mt-8">
           INTENSITY.
           <br />
           DISCIPLINE.
           <br />
           PRECISION.
         </h2>
-        <p className="text-white/60 text-lg max-w-2xl mx-auto text-center mt-6 leading-relaxed">
+        <p className="text-white/60 text-base sm:text-lg max-w-2xl mx-auto text-center mt-5 sm:mt-6 leading-relaxed px-2 sm:px-0">
           These aren&apos;t just words on a wall. They&apos;re the standard we hold
           every player and coach to every time the puck drops. TL Elite was
           built on the belief that elite development doesn&apos;t require elite

@@ -43,14 +43,14 @@ export default function PackagesPage() {
 
       <SectionWrapper className="bg-black">
         {/* Intro */}
-        <div className="max-w-2xl mb-14">
+        <div className="max-w-2xl mb-10 sm:mb-14">
           <p className="text-white/60 text-base leading-relaxed">
             Packages give you flexibility — purchase a bundle and use your sessions at any open drop-in slot throughout the season. No expiry. No hassle.
           </p>
         </div>
 
         {/* Package Cards */}
-        <div className="grid md:grid-cols-2 gap-6 max-w-3xl">
+        <div className="grid md:grid-cols-2 gap-5 sm:gap-6 max-w-3xl px-1 sm:px-0">
           {packages.map((pkg, i) => (
             <AnimateIn
               key={pkg.name}
@@ -58,7 +58,7 @@ export default function PackagesPage() {
               delay={([0, 150] as const)[i] ?? 0}
             >
             <div
-              className={`relative bg-[#111111] rounded-2xl border p-8 flex flex-col gap-4 ${
+              className={`relative bg-[#111111] rounded-2xl border p-6 sm:p-8 flex flex-col gap-4 ${
                 pkg.badge ? "border-[#4CAF50]/50" : "border-white/10"
               }`}
             >

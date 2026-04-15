@@ -41,20 +41,20 @@ export function ServicesSection() {
 
   return (
     <SectionWrapper className="bg-black">
-      <h2 className="section-heading text-white text-3xl sm:text-4xl text-center mb-4">
+      <h2 className="section-heading text-white text-2xl sm:text-4xl text-center mb-4">
         WHAT WE OFFER
       </h2>
-      <p className="text-white/50 text-center mb-14">
+      <p className="text-white/50 text-center mb-10 sm:mb-14 text-sm sm:text-base">
         Year-round development for players ages 5–18
       </p>
 
-      <div ref={ref} className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div ref={ref} className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 px-1 sm:px-0">
         {services.map((service, i) => {
           const Icon = service.icon;
           return (
             <div
               key={service.title}
-              className={`bg-[#111111] border border-white/10 rounded-2xl p-8 hover:border-[#4CAF50]/50 transition-all duration-300 flex flex-col ${
+              className={`bg-[#111111] border border-white/10 rounded-2xl p-6 sm:p-8 hover:border-[#4CAF50]/50 transition-all duration-300 flex flex-col ${
                 inView ? "animate-fade-up" : "opacity-0"
               }`}
               style={{ animationDelay: `${i * 0.1}s` }}

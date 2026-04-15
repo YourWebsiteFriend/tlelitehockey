@@ -20,7 +20,7 @@ export function PageHero({
   objectPosition = "center 30%",
 }: PageHeroProps) {
   return (
-    <div className="relative w-full h-[60vh] min-h-[360px] flex items-center justify-center bg-black overflow-hidden">
+    <div className="relative w-full h-[55vh] sm:h-[60vh] min-h-[300px] sm:min-h-[360px] flex items-center justify-center bg-black overflow-hidden">
       {/* Background image */}
       {backgroundImage && (
         <Image
@@ -42,14 +42,14 @@ export function PageHero({
         <h1
           className={cn(
             "section-heading text-white",
-            "text-4xl sm:text-5xl lg:text-6xl"
+            "text-2xl sm:text-4xl lg:text-6xl"
           )}
         >
           {heading}
         </h1>
 
         {body && (
-          <p className="mt-4 text-white/80 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+          <p className="mt-3 sm:mt-4 text-white/80 text-sm sm:text-base lg:text-lg max-w-2xl mx-auto leading-relaxed px-2 sm:px-0">
             {body}
           </p>
         )}

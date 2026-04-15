@@ -12,7 +12,7 @@ export function SectionWrapper({ children, className, id }: SectionWrapperProps)
       id={id}
       className={cn("w-full bg-black", className)}
     >
-      <div className="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
+      <div className="mx-auto max-w-[1200px] px-5 sm:px-8 lg:px-10 py-16 sm:py-20 lg:py-28">
         {children}
       </div>
     </section>

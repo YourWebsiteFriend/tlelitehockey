@@ -5,9 +5,9 @@ import { SectionWrapper } from "@/components/shared/SectionWrapper";
 export function MissionSection() {
   return (
     <SectionWrapper className="bg-[#111111]">
-      <div className="grid lg:grid-cols-2 gap-8">
+      <div className="grid lg:grid-cols-2 gap-6 sm:gap-8">
         {/* Left: real action photo */}
-        <div className="relative min-h-[300px] lg:min-h-0 lg:self-stretch rounded-2xl overflow-hidden bg-[#0a0a0a]">
+        <div className="relative min-h-[260px] sm:min-h-[320px] lg:min-h-0 lg:self-stretch rounded-2xl overflow-hidden bg-[#0a0a0a] mx-1 sm:mx-0">
           <Image
             src="/images/DSC02694.jpg"
             alt="Young TL Elite Hockey player focused and ready on the ice"
@@ -19,11 +19,11 @@ export function MissionSection() {
         </div>
 
         {/* Right: green card */}
-        <div className="bg-[#4CAF50] p-10 lg:p-16 flex flex-col justify-center rounded-2xl">
+        <div className="bg-[#4CAF50] p-8 sm:p-10 lg:p-16 flex flex-col justify-center rounded-2xl mx-1 sm:mx-0">
           <p className="text-white/70 text-xs uppercase tracking-[0.3em] mb-4">
             THE TL ELITE DIFFERENCE
           </p>
-          <h2 className="section-heading text-white text-3xl lg:text-4xl leading-tight">
+          <h2 className="section-heading text-white text-2xl sm:text-3xl lg:text-4xl leading-tight">
             INTENSITY.
             <br />
             DISCIPLINE.
