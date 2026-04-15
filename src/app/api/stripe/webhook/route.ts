@@ -62,15 +62,16 @@ export async function POST(request: Request): Promise<Response> {
         console.error('[stripe/webhook] awardLoyaltyPoints (booking) error:', err);
       }
     } else if (metadata.type === 'shop_order') {
-      const { user_id } = metadata;
       const paymentIntentId =
         typeof session.payment_intent === 'string'
           ? session.payment_intent
           : (session.payment_intent?.id ?? null);
 
+      const userId = metadata.user_id && metadata.user_id !== 'guest' ? metadata.user_id : null;
+
       // Insert order record
       const { error: insertError } = await supabase.from('orders').insert({
-        user_id,
+        user_id: userId,
         stripe_checkout_session_id: session.id,
         stripe_payment_intent_id: paymentIntentId,
         status: 'paid',
@@ -83,11 +84,13 @@ export async function POST(request: Request): Promise<Response> {
         console.error('[stripe/webhook] order insert error:', insertError);
       }
 
-      // Award loyalty points (non-blocking)
-      try {
-        await awardLoyaltyPoints(user_id, 'purchase');
-      } catch (err) {
-        console.error('[stripe/webhook] awardLoyaltyPoints (purchase) error:', err);
+      // Award loyalty points (non-blocking, guests skipped)
+      if (userId) {
+        try {
+          await awardLoyaltyPoints(userId, 'purchase');
+        } catch (err) {
+          console.error('[stripe/webhook] awardLoyaltyPoints (purchase) error:', err);
+        }
       }
     }
   }

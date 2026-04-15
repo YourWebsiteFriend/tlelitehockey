@@ -95,12 +95,7 @@ export async function createShopCheckout(
 
   const {
     data: { user },
-    error: authError,
   } = await supabase.auth.getUser();
-
-  if (authError || !user) {
-    return { success: false, error: 'Please log in to continue.' };
-  }
 
   const parsed = CartItemsSchema.safeParse(items);
   if (!parsed.success) {
@@ -120,7 +115,7 @@ export async function createShopCheckout(
       cancel_url: `${siteUrl}/shop`,
       metadata: {
         type: 'shop_order',
-        user_id: user.id,
+        user_id: user?.id ?? 'guest',
       },
     });
 
