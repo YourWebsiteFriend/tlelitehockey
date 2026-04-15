@@ -47,7 +47,7 @@ export function SessionsBoard({ sessions, hideFilters = false, defaultTab }: Pro
           <TabsTrigger
             key={tab.value}
             value={tab.value}
-            className="rounded-full border-none bg-transparent text-white/50 px-5 py-2 mb-3 text-sm font-bold uppercase tracking-wide transition-colors hover:text-white hover:bg-white/5 data-active:bg-[#F78E2B]/15 data-active:text-[#F78E2B] data-active:shadow-none after:hidden"
+            className="rounded-full border-none bg-transparent text-white/50 px-5 pt-3 pb-3 mb-3 text-sm font-bold uppercase tracking-wide transition-colors hover:text-white hover:bg-white/5 data-active:bg-[#F78E2B]/15 data-active:text-[#F78E2B] data-active:shadow-none after:hidden"
           >
             {tab.label}
           </TabsTrigger>
