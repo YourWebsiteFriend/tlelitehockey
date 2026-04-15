@@ -48,31 +48,39 @@ export function ServicesSection() {
         Year-round development for players ages 5–18
       </p>
 
-      {/* 2×2 on mobile → 4-col on desktop */}
-      <div ref={ref} className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+      <div ref={ref} className="flex flex-col gap-4">
         {services.map((service, i) => {
           const Icon = service.icon;
           return (
-            <div
+            <Link
               key={service.title}
-              className={`bg-[#111111] border border-white/10 rounded-2xl p-5 sm:p-8 hover:border-[#4CAF50]/50 transition-all duration-300 flex flex-col ${
-                inView ? "animate-fade-up" : "opacity-0"
-              }`}
+              href={service.href}
+              className={`group relative bg-[#111111] border border-white/10 rounded-2xl p-6 sm:p-8 flex items-center gap-6 overflow-hidden
+                hover:border-[#4CAF50]/60 hover:bg-[#141414] active:scale-[0.99]
+                transition-all duration-300 ${inView ? "animate-fade-up" : "opacity-0"}`}
               style={{ animationDelay: `${i * 0.1}s` }}
             >
-              <Icon className="text-[#4CAF50] w-8 h-8 sm:w-10 sm:h-10 mb-4 sm:mb-6" />
-              <h3 className="font-bold uppercase text-white text-sm sm:text-xl mb-2 sm:mb-3 leading-tight">
-                {service.title}
-              </h3>
-              <p className="text-white/60 text-xs sm:text-sm leading-relaxed flex-1">
-                {service.body}
-              </p>
-              <div className="mt-auto pt-4 sm:pt-6">
-                <Link href={service.href} className="text-[#4CAF50] text-xs sm:text-sm font-bold hover:underline">
-                  {service.linkLabel}
-                </Link>
+              {/* Green left accent bar — slides in on hover */}
+              <span className="absolute left-0 top-0 bottom-0 w-[3px] bg-[#4CAF50] scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-bottom rounded-l-2xl" />
+
+              {/* Icon */}
+              <div className="shrink-0 w-14 h-14 rounded-xl bg-[#4CAF50]/10 border border-[#4CAF50]/20 flex items-center justify-center group-hover:bg-[#4CAF50]/20 transition-colors duration-300">
+                <Icon className="text-[#4CAF50] w-6 h-6" />
               </div>
-            </div>
+
+              {/* Text */}
+              <div className="flex-1 min-w-0">
+                <h3 className="font-black uppercase text-white text-base sm:text-lg leading-tight mb-1 group-hover:text-[#4CAF50] transition-colors duration-300">
+                  {service.title}
+                </h3>
+                <p className="text-white/50 text-sm leading-relaxed">{service.body}</p>
+              </div>
+
+              {/* Arrow — slides in on hover */}
+              <span className="shrink-0 text-[#4CAF50] font-bold text-lg opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+                →
+              </span>
+            </Link>
           );
         })}
       </div>
