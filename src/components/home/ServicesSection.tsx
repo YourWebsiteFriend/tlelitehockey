@@ -48,7 +48,32 @@ export function ServicesSection() {
         Year-round development for players ages 5–18
       </p>
 
-      <div ref={ref} className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 px-1 sm:px-0">
+      {/* Mobile — horizontal snap carousel */}
+      <div className="sm:hidden overflow-x-auto scrollbar-none -mx-5 px-5 pb-3">
+        <div className="flex gap-4 w-max">
+          {services.map((service) => {
+            const Icon = service.icon;
+            return (
+              <div
+                key={service.title}
+                className="w-[75vw] flex-shrink-0 bg-[#111111] border border-white/10 rounded-2xl p-6 flex flex-col snap-start"
+              >
+                <Icon className="text-[#4CAF50] w-9 h-9 mb-5" />
+                <h3 className="font-bold uppercase text-white text-base mb-3">{service.title}</h3>
+                <p className="text-white/60 text-sm leading-relaxed flex-1">{service.body}</p>
+                <div className="mt-auto pt-5">
+                  <Link href={service.href} className="text-[#4CAF50] text-sm font-bold hover:underline">
+                    {service.linkLabel}
+                  </Link>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Tablet+ — grid */}
+      <div ref={ref} className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
         {services.map((service, i) => {
           const Icon = service.icon;
           return (
@@ -60,17 +85,10 @@ export function ServicesSection() {
               style={{ animationDelay: `${i * 0.1}s` }}
             >
               <Icon className="text-[#4CAF50] w-10 h-10 mb-6" />
-              <h3 className="font-bold uppercase text-white text-xl mb-3">
-                {service.title}
-              </h3>
-              <p className="text-white/60 text-sm leading-relaxed flex-1">
-                {service.body}
-              </p>
+              <h3 className="font-bold uppercase text-white text-xl mb-3">{service.title}</h3>
+              <p className="text-white/60 text-sm leading-relaxed flex-1">{service.body}</p>
               <div className="mt-auto pt-6">
-                <Link
-                  href={service.href}
-                  className="text-[#4CAF50] text-sm font-bold hover:underline"
-                >
+                <Link href={service.href} className="text-[#4CAF50] text-sm font-bold hover:underline">
                   {service.linkLabel}
                 </Link>
               </div>

@@ -110,8 +110,19 @@ export function TestimonialsSection() {
         </h2>
       </div>
 
-      {/* Marquee — full bleed */}
-      <div className="overflow-hidden">
+      {/* Mobile — touch scrollable row */}
+      <div className="sm:hidden overflow-x-auto scrollbar-none px-5 pb-2">
+        <div className="flex gap-4">
+          {testimonials.map((t, i) => (
+            <div key={i} className="flex-shrink-0 w-[82vw]">
+              <TestimonialCard t={t} />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Desktop — auto-scroll marquee */}
+      <div className="hidden sm:block overflow-hidden">
         <div className="flex animate-marquee">
           {doubled.map((t, i) => (
             <TestimonialCard key={i} t={t} />

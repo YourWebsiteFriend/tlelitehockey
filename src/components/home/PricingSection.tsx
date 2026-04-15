@@ -61,7 +61,45 @@ export function PricingSection() {
       <p className="text-white/50 text-center mb-10 sm:mb-12 text-sm">
         All sessions run at Thayer Sports Center, Braintree MA
       </p>
-      <div ref={ref} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 px-1 sm:px-0">
+      {/* Mobile — horizontal snap carousel */}
+      <div className="sm:hidden overflow-x-auto scrollbar-none -mx-5 px-5 pb-3">
+        <div className="flex gap-4 w-max">
+          {plans.map((plan) => (
+            <div
+              key={plan.name}
+              className={`w-[72vw] flex-shrink-0 snap-start rounded-2xl p-6 flex flex-col border ${
+                plan.highlight
+                  ? "bg-[#4CAF50] border-[#4CAF50]"
+                  : "bg-[#111111] border-white/10"
+              }`}
+            >
+              <p className={`text-xs font-bold uppercase tracking-widest mb-3 ${plan.highlight ? "text-white/80" : "text-[#F78E2B]"}`}>
+                {plan.name}
+              </p>
+              <div className="mb-4">
+                <span className="text-4xl font-black text-white">{plan.price}</span>
+                <span className={`text-xs ml-2 ${plan.highlight ? "text-white/70" : "text-white/40"}`}>{plan.per}</span>
+              </div>
+              <p className={`text-sm leading-relaxed flex-1 mb-5 ${plan.highlight ? "text-white/90" : "text-white/60"}`}>
+                {plan.description}
+              </p>
+              <Link
+                href={plan.href}
+                className={`text-center text-sm font-bold uppercase tracking-wide py-3 rounded-full transition-colors ${
+                  plan.highlight
+                    ? "bg-white text-[#4CAF50]"
+                    : "border border-white/30 text-white"
+                }`}
+              >
+                {plan.cta}
+              </Link>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Tablet+ — grid */}
+      <div ref={ref} className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
         {plans.map((plan, i) => (
           <div
             key={plan.name}
@@ -74,28 +112,14 @@ export function PricingSection() {
             }`}
             style={{ animationDelay: `${i * 0.1}s` }}
           >
-            <p
-              className={`text-xs font-bold uppercase tracking-widest mb-3 ${
-                plan.highlight ? "text-white/80" : "text-[#F78E2B]"
-              }`}
-            >
+            <p className={`text-xs font-bold uppercase tracking-widest mb-3 ${plan.highlight ? "text-white/80" : "text-[#F78E2B]"}`}>
               {plan.name}
             </p>
             <div className="mb-4">
               <span className="text-5xl font-black text-white">{plan.price}</span>
-              <span
-                className={`text-xs ml-2 ${
-                  plan.highlight ? "text-white/70" : "text-white/40"
-                }`}
-              >
-                {plan.per}
-              </span>
+              <span className={`text-xs ml-2 ${plan.highlight ? "text-white/70" : "text-white/40"}`}>{plan.per}</span>
             </div>
-            <p
-              className={`text-sm leading-relaxed flex-1 mb-6 ${
-                plan.highlight ? "text-white/90" : "text-white/60"
-              }`}
-            >
+            <p className={`text-sm leading-relaxed flex-1 mb-6 ${plan.highlight ? "text-white/90" : "text-white/60"}`}>
               {plan.description}
             </p>
             <Link
