@@ -17,7 +17,7 @@ export function StatsBar() {
                 i < stats.length - 1 ? "sm:border-r sm:border-white/10" : ""
               }`}
             >
-              <p className="text-3xl font-black text-[#F78E2B]">{stat.num}</p>
+              <p className="text-3xl font-black text-white">{stat.num}</p>
               <p className="text-xs uppercase tracking-widest text-white mt-1">{stat.label}</p>
             </div>
           ))}

@@ -173,7 +173,7 @@ export function Navbar() {
 
           <Link
             href="/book"
-            className="text-sm font-bold px-4 py-2 rounded-full border border-[#4CAF50] text-[#4CAF50] hover:bg-[#4CAF50]/10 transition-colors duration-150"
+            className="text-sm font-bold px-4 py-2 rounded-full border border-[#F78E2B] text-[#F78E2B] hover:bg-[#F78E2B]/10 transition-colors duration-150"
           >
             Book Now
           </Link>

@@ -12,7 +12,6 @@ import { CoachTeaser } from "@/components/home/CoachTeaser";
 import { TestimonialsSection } from "@/components/shared/TestimonialsSection";
 import { InstagramSection } from "@/components/home/InstagramSection";
 import { PhotoGallery } from "@/components/home/PhotoGallery";
-import { PartnersSection } from "@/components/home/PartnersSection";
 import { CtaBannerSection } from "@/components/home/CtaBannerSection";
 import { getProducts } from "@/services/products.service";
 
@@ -38,7 +37,6 @@ export default async function HomePage() {
       <TestimonialsSection />
       <InstagramSection />
       <PhotoGallery />
-      <PartnersSection />
       <CtaBannerSection />
       <script
         type="application/ld+json"
