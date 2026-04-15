@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { SessionCard } from "@/components/book/SessionCard";
 import type { Session, SessionSeason } from "@/types/session";
 
@@ -12,7 +11,7 @@ interface Props {
 }
 
 const TABS: Array<{ label: string; value: string }> = [
-  { label: "All Services", value: "all" },
+  { label: "All", value: "all" },
   { label: "Drop Ins", value: "Drop Ins" },
   { label: "Spring 2026", value: "Spring 2026" },
   { label: "Summer 2026", value: "Summer 2026" },
@@ -41,34 +40,39 @@ export function SessionsBoard({ sessions, hideFilters = false, defaultTab }: Pro
   }
 
   return (
-    <Tabs value={activeTab} onValueChange={setActiveTab}>
-      <TabsList className="bg-transparent border-b border-white/10 w-full justify-start rounded-none p-0 mb-10 h-auto overflow-x-auto gap-1">
-        {TABS.map((tab) => (
-          <TabsTrigger
-            key={tab.value}
-            value={tab.value}
-            className="rounded-full border-none bg-transparent text-white/50 px-5 pt-3 pb-3 mb-3 text-sm font-bold uppercase tracking-wide transition-colors hover:text-white hover:bg-white/5 data-active:bg-[#F78E2B]/15 data-active:text-[#F78E2B] data-active:shadow-none after:hidden"
-          >
-            {tab.label}
-          </TabsTrigger>
-        ))}
-      </TabsList>
+    <div>
+      {/* Tab bar */}
+      <div className="flex gap-1 mb-10 border-b border-white/10 overflow-x-auto">
+        {TABS.map((tab) => {
+          const active = tab.value === activeTab;
+          return (
+            <button
+              key={tab.value}
+              onClick={() => setActiveTab(tab.value)}
+              className={`relative shrink-0 px-5 py-3 text-sm font-bold uppercase tracking-widest transition-colors duration-150 focus:outline-none
+                ${active ? "text-white" : "text-white/40 hover:text-white/70"}`}
+            >
+              {tab.label}
+              {active && (
+                <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#F78E2B]" />
+              )}
+            </button>
+          );
+        })}
+      </div>
 
-      {TABS.map((tab) => (
-        <TabsContent key={tab.value} value={tab.value}>
-          {filtered.length === 0 ? (
-            <div className="bg-[#111111] rounded-2xl p-12 text-center text-white/60">
-              No sessions available in this category right now.
-            </div>
-          ) : (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filtered.map((s) => (
-                <SessionCard key={s.id} session={s} />
-              ))}
-            </div>
-          )}
-        </TabsContent>
-      ))}
-    </Tabs>
+      {/* Cards */}
+      {filtered.length === 0 ? (
+        <div className="bg-[#111111] rounded-2xl p-12 text-center text-white/60">
+          No sessions available in this category right now.
+        </div>
+      ) : (
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filtered.map((s) => (
+            <SessionCard key={s.id} session={s} />
+          ))}
+        </div>
+      )}
+    </div>
   );
 }
