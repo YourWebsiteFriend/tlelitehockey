@@ -8,7 +8,7 @@ export async function signupEmail(
 ): Promise<{ success: boolean; error?: string }> {
   const parsed = EmailSignupSchema.safeParse(input);
   if (!parsed.success) {
-    return { success: false, error: parsed.error.errors[0]?.message ?? 'Invalid input.' };
+    return { success: false, error: parsed.error.issues[0]?.message ?? 'Invalid input.' };
   }
 
   const { email, source } = parsed.data;
