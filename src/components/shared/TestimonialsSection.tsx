@@ -1,5 +1,7 @@
 "use client";
 
+import { useRef } from "react";
+
 interface Testimonial {
   quote: string;
   author: string;
@@ -98,9 +100,18 @@ function TestimonialCard({ t }: { t: Testimonial }) {
 }
 
 export function TestimonialsSection() {
+  const marqueeRef = useRef<HTMLDivElement>(null);
+
+  const handleTouchStart = () => {
+    if (marqueeRef.current) marqueeRef.current.style.animationPlayState = "paused";
+  };
+  const handleTouchEnd = () => {
+    if (marqueeRef.current) marqueeRef.current.style.animationPlayState = "running";
+  };
+
   return (
     <section className="w-full bg-black py-20 lg:py-28">
-      {/* Heading — constrained */}
+      {/* Heading */}
       <div className="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8 text-center mb-12">
         <p className="text-[#F78E2B] text-xs uppercase tracking-[0.3em] font-bold mb-3">
           TESTIMONIALS
@@ -110,20 +121,16 @@ export function TestimonialsSection() {
         </h2>
       </div>
 
-      {/* Mobile — touch scrollable row */}
-      <div className="sm:hidden overflow-x-auto scrollbar-none px-5 pb-2">
-        <div className="flex gap-4">
-          {testimonials.map((t, i) => (
-            <div key={i} className="flex-shrink-0 w-[82vw]">
-              <TestimonialCard t={t} />
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Desktop — auto-scroll marquee */}
-      <div className="hidden sm:block overflow-hidden">
-        <div className="flex animate-marquee">
+      {/* Marquee — all screen sizes. Touch pauses, release resumes. */}
+      <div className="overflow-hidden">
+        <div
+          ref={marqueeRef}
+          className="flex animate-marquee"
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+          onMouseEnter={handleTouchStart}
+          onMouseLeave={handleTouchEnd}
+        >
           {doubled.map((t, i) => (
             <TestimonialCard key={i} t={t} />
           ))}

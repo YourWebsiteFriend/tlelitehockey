@@ -48,47 +48,27 @@ export function ServicesSection() {
         Year-round development for players ages 5–18
       </p>
 
-      {/* Mobile — horizontal snap carousel */}
-      <div className="sm:hidden overflow-x-auto scrollbar-none -mx-5 px-5 pb-3">
-        <div className="flex gap-4 w-max">
-          {services.map((service) => {
-            const Icon = service.icon;
-            return (
-              <div
-                key={service.title}
-                className="w-[75vw] flex-shrink-0 bg-[#111111] border border-white/10 rounded-2xl p-6 flex flex-col snap-start"
-              >
-                <Icon className="text-[#4CAF50] w-9 h-9 mb-5" />
-                <h3 className="font-bold uppercase text-white text-base mb-3">{service.title}</h3>
-                <p className="text-white/60 text-sm leading-relaxed flex-1">{service.body}</p>
-                <div className="mt-auto pt-5">
-                  <Link href={service.href} className="text-[#4CAF50] text-sm font-bold hover:underline">
-                    {service.linkLabel}
-                  </Link>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* Tablet+ — grid */}
-      <div ref={ref} className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+      {/* 2×2 on mobile → 4-col on desktop */}
+      <div ref={ref} className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
         {services.map((service, i) => {
           const Icon = service.icon;
           return (
             <div
               key={service.title}
-              className={`bg-[#111111] border border-white/10 rounded-2xl p-6 sm:p-8 hover:border-[#4CAF50]/50 transition-all duration-300 flex flex-col ${
+              className={`bg-[#111111] border border-white/10 rounded-2xl p-5 sm:p-8 hover:border-[#4CAF50]/50 transition-all duration-300 flex flex-col ${
                 inView ? "animate-fade-up" : "opacity-0"
               }`}
               style={{ animationDelay: `${i * 0.1}s` }}
             >
-              <Icon className="text-[#4CAF50] w-10 h-10 mb-6" />
-              <h3 className="font-bold uppercase text-white text-xl mb-3">{service.title}</h3>
-              <p className="text-white/60 text-sm leading-relaxed flex-1">{service.body}</p>
-              <div className="mt-auto pt-6">
-                <Link href={service.href} className="text-[#4CAF50] text-sm font-bold hover:underline">
+              <Icon className="text-[#4CAF50] w-8 h-8 sm:w-10 sm:h-10 mb-4 sm:mb-6" />
+              <h3 className="font-bold uppercase text-white text-sm sm:text-xl mb-2 sm:mb-3 leading-tight">
+                {service.title}
+              </h3>
+              <p className="text-white/60 text-xs sm:text-sm leading-relaxed flex-1">
+                {service.body}
+              </p>
+              <div className="mt-auto pt-4 sm:pt-6">
+                <Link href={service.href} className="text-[#4CAF50] text-xs sm:text-sm font-bold hover:underline">
                   {service.linkLabel}
                 </Link>
               </div>
