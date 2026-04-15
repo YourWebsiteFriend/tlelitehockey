@@ -61,7 +61,7 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-50 w-full bg-black border-b border-white/10">
       <nav
-        className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between"
+        className="relative mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between"
         aria-label="Main navigation"
       >
         {/* ── Desktop Left Links ───────────────────────────────────── */}
@@ -134,7 +134,7 @@ export function Navbar() {
         </div>
 
         {/* ── Center Logo ──────────────────────────────────────────── */}
-        <div className="flex-1 lg:flex-none flex justify-center lg:absolute lg:left-1/2 lg:-translate-x-1/2">
+        <div className="absolute left-1/2 -translate-x-1/2">
           <Link
             href="/"
             className="flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4CAF50] rounded"
