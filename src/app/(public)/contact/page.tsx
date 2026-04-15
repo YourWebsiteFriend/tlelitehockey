@@ -20,9 +20,10 @@ export default function ContactPage() {
         <div className="grid lg:grid-cols-3 gap-10 lg:gap-16">
           {/* Form */}
           <AnimateIn animation="fade-left" className="lg:col-span-2">
-            <h2 className="section-heading text-white text-2xl mb-10">
+            <h2 className="section-heading text-white text-2xl mb-2">
               SEND US A MESSAGE
             </h2>
+            <p className="text-white/50 text-sm mb-10">We typically respond within 24–48 hours.</p>
             <ContactForm />
           </AnimateIn>
 
@@ -113,6 +114,19 @@ export default function ContactPage() {
               </div>
             </div>
           </AnimateIn>
+        </div>
+        {/* Google Maps embed */}
+        <div className="w-full h-64 rounded-2xl overflow-hidden border border-white/10 mt-8">
+          <iframe
+            src="https://maps.google.com/maps?q=Thayer+Sports+Center+1515+Washington+St+Braintree+MA&output=embed"
+            width="100%"
+            height="100%"
+            style={{ border: 0 }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Thayer Sports Center location"
+          />
         </div>
       </SectionWrapper>
     </>

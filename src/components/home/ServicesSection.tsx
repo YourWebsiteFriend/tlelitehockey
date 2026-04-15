@@ -1,44 +1,43 @@
-"use client";
-
+import Image from "next/image";
 import Link from "next/link";
-import { Users, CalendarDays, Film, Star } from "lucide-react";
 import { SectionWrapper } from "@/components/shared/SectionWrapper";
-import { useInView } from "@/hooks/useInView";
 
 const services = [
   {
-    icon: Users,
     title: "SMALL GROUP SESSIONS",
-    body: "Max 8 players per group. Focused reps with direct coaching on skating, shooting, passing, and game IQ.",
-    linkLabel: "Book Now →",
-    href: "/book",
+    desc: "Max 8 players per group. Direct coaching every rep.",
+    image: "/images/DSC02680.jpg",
+    alt: "Small group hockey training session at TL Elite",
+    learnHref: "/book",
+    bookHref: "/book",
   },
   {
-    icon: CalendarDays,
     title: "SEASONAL CLINICS",
-    body: "High-intensity clinics throughout the year — Christmas, Thanksgiving, Summer, and more. Up to 25 players, 5+ coaches on the ice.",
-    linkLabel: "View Clinics →",
-    href: "/clinics",
+    desc: "High-intensity multi-coach clinics all year long.",
+    image: "/images/DSC02755.jpg",
+    alt: "TL Elite seasonal hockey clinic with multiple players",
+    learnHref: "/clinics",
+    bookHref: "/clinics",
   },
   {
-    icon: Star,
     title: "PRIVATE LESSONS",
-    body: "One coach. One player. Maximum development. Available at Thayer Sports Center in Braintree and Gallo Ice Arena in Bourne.",
-    linkLabel: "Request a Session →",
-    href: "/private-lessons",
+    desc: "One coach. One player. Maximum development.",
+    image: "/images/DSC02673.jpg",
+    alt: "Coach working one-on-one with a player at TL Elite",
+    learnHref: "/private-lessons",
+    bookHref: "/private-lessons",
   },
   {
-    icon: Film,
     title: "FILM ANALYSIS",
-    body: "Two monthly film sessions with TL coaches who break down your decision-making, positioning, and technique — live on Zoom. See the game differently.",
-    linkLabel: "Learn More →",
-    href: "/contact",
+    desc: "Live Zoom sessions to elevate your game IQ.",
+    image: "/images/DSC02694.jpg",
+    alt: "Player in focused training at TL Elite Hockey",
+    learnHref: "/contact",
+    bookHref: "/contact",
   },
 ];
 
 export function ServicesSection() {
-  const { ref, inView } = useInView();
-
   return (
     <SectionWrapper className="bg-black">
       <h2 className="section-heading text-white text-2xl sm:text-4xl text-center mb-4">
@@ -48,41 +47,48 @@ export function ServicesSection() {
         Year-round development for players ages 5–18
       </p>
 
-      <div ref={ref} className="flex flex-col gap-4">
-        {services.map((service, i) => {
-          const Icon = service.icon;
-          return (
-            <Link
-              key={service.title}
-              href={service.href}
-              className={`group relative bg-[#111111] border border-white/10 rounded-2xl p-6 sm:p-8 flex items-center gap-6 overflow-hidden
-                hover:border-[#4CAF50]/60 hover:bg-[#141414] active:scale-[0.99]
-                transition-all duration-300 ${inView ? "animate-fade-up" : "opacity-0"}`}
-              style={{ animationDelay: `${i * 0.1}s` }}
-            >
-              {/* Green left accent bar — slides in on hover */}
-              <span className="absolute left-0 top-0 bottom-0 w-[3px] bg-[#4CAF50] scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-bottom rounded-l-2xl" />
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+        {services.map((service) => (
+          <div
+            key={service.title}
+            className="group relative overflow-hidden rounded-2xl aspect-[4/3]"
+          >
+            {/* Background image */}
+            <Image
+              src={service.image}
+              alt={service.alt}
+              fill
+              className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
+              sizes="(max-width: 640px) 100vw, 50vw"
+            />
 
-              {/* Icon */}
-              <div className="shrink-0 w-14 h-14 rounded-xl bg-[#4CAF50]/10 border border-[#4CAF50]/20 flex items-center justify-center group-hover:bg-[#4CAF50]/20 transition-colors duration-300">
-                <Icon className="text-[#4CAF50] w-6 h-6" />
+            {/* Gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
+
+            {/* Bottom content */}
+            <div className="absolute bottom-0 left-0 right-0 p-6">
+              <h3 className="text-white font-black uppercase text-xl leading-tight">
+                {service.title}
+              </h3>
+              <p className="text-white/60 text-sm mt-1">{service.desc}</p>
+
+              <div className="flex flex-wrap gap-3 mt-4">
+                <Link
+                  href={service.learnHref}
+                  className="rounded-full border border-white/50 px-4 py-2 text-xs font-bold uppercase tracking-wide text-white hover:border-white hover:bg-white/10 transition-colors"
+                >
+                  Learn More
+                </Link>
+                <Link
+                  href={service.bookHref}
+                  className="rounded-full bg-[#4CAF50] px-4 py-2 text-xs font-bold uppercase tracking-wide text-white hover:bg-[#43A047] transition-colors"
+                >
+                  Book Now →
+                </Link>
               </div>
-
-              {/* Text */}
-              <div className="flex-1 min-w-0">
-                <h3 className="font-black uppercase text-white text-base sm:text-lg leading-tight mb-1 group-hover:text-[#4CAF50] transition-colors duration-300">
-                  {service.title}
-                </h3>
-                <p className="text-white/50 text-sm leading-relaxed">{service.body}</p>
-              </div>
-
-              {/* Arrow — slides in on hover */}
-              <span className="shrink-0 text-[#4CAF50] font-bold text-lg opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
-                →
-              </span>
-            </Link>
-          );
-        })}
+            </div>
+          </div>
+        ))}
       </div>
     </SectionWrapper>
   );

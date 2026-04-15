@@ -64,7 +64,7 @@ export function HomeHero() {
       ))}
 
       {/* Dark overlay */}
-      <div className="absolute inset-0 bg-black/65" aria-hidden="true" />
+      <div className="absolute inset-0 bg-black/70" aria-hidden="true" />
 
       {/* Content */}
       <div className="relative z-10 mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8 text-center">
@@ -72,10 +72,9 @@ export function HomeHero() {
           TL ELITE HOCKEY SCHOOL
         </p>
 
-        <h1 className="font-black uppercase text-3xl sm:text-6xl lg:text-8xl text-white tracking-tight leading-none">
-          TRAIN WITH
-          <br />
-          TL ELITE
+        <h1 className="font-black uppercase tracking-tight leading-none">
+          <span className="block text-3xl sm:text-6xl lg:text-8xl text-white">ELEVATE YOUR GAME.</span>
+          <span className="block text-2xl sm:text-5xl lg:text-6xl text-white/80 font-bold mt-2 sm:mt-3">TRAIN WITH TL ELITE.</span>
         </h1>
 
         <p className="text-white/70 text-base sm:text-lg max-w-xl mx-auto mt-5 sm:mt-6 leading-relaxed px-2 sm:px-0">
@@ -96,6 +95,24 @@ export function HomeHero() {
           >
             Summer 2026
           </Link>
+        </div>
+
+        {/* Slide dot indicators */}
+        <div className="flex items-center justify-center gap-2 mt-8" role="tablist" aria-label="Slideshow navigation">
+          {slides.map((slide, i) => (
+            <button
+              key={slide.src}
+              role="tab"
+              aria-selected={i === current}
+              aria-label={`Slide ${i + 1}`}
+              onClick={() => setCurrent(i)}
+              className={`rounded-full transition-all duration-300 ${
+                i === current
+                  ? "bg-[#F78E2B] w-6 h-2"
+                  : "bg-white/30 w-2 h-2 hover:bg-white/50"
+              }`}
+            />
+          ))}
         </div>
       </div>
 

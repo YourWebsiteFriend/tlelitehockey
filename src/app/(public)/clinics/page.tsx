@@ -1,6 +1,7 @@
 export const dynamic = "force-dynamic";
 
 import type { Metadata } from "next";
+import { Users, Zap, Shield } from "lucide-react";
 import { PageHero } from "@/components/layout/PageHero";
 import { SectionWrapper } from "@/components/shared/SectionWrapper";
 import { SessionsBoard } from "@/components/book/SessionsBoard";
@@ -29,6 +30,8 @@ export default async function ClinicsPage() {
         body="High-intensity skill development throughout the year. Up to 25 players, 5+ coaches on the ice."
         backgroundImage="/images/DSC02640.jpg"
         objectPosition="center 20%"
+        ctaLabel="View Schedule"
+        ctaHref="/schedule"
       />
 
       {/* Stats bar */}
@@ -48,6 +51,23 @@ export default async function ClinicsPage() {
             ))}
           </div>
         </AnimateIn>
+      </SectionWrapper>
+
+      {/* Features grid */}
+      <SectionWrapper className="bg-black">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          {[
+            { icon: Users, label: "5+ Coaches On Ice", desc: "More coaches means more reps and more individual feedback per session." },
+            { icon: Zap, label: "Nonstop 50 Minutes", desc: "No standing around. Every drill is designed to maximize time on puck." },
+            { icon: Shield, label: "Age-Separated Groups", desc: "Players train with peers at their level for the right challenge and growth." },
+          ].map((f) => (
+            <div key={f.label} className="bg-[#111111] rounded-2xl p-6 border border-white/10">
+              <f.icon className="text-[#4CAF50] w-8 h-8 mb-4" />
+              <h3 className="text-white font-bold uppercase text-sm mb-2">{f.label}</h3>
+              <p className="text-white/60 text-sm leading-relaxed">{f.desc}</p>
+            </div>
+          ))}
+        </div>
       </SectionWrapper>
 
       {/* Sessions */}

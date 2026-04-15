@@ -2,12 +2,17 @@ export const dynamic = "force-dynamic";
 
 import type { Metadata } from "next";
 import { HomeHero } from "@/components/home/HomeHero";
+import { StatsBar } from "@/components/home/StatsBar";
 import { MissionSection } from "@/components/home/MissionSection";
 import { ServicesSection } from "@/components/home/ServicesSection";
+import { FacilitiesSection } from "@/components/home/FacilitiesSection";
 import { PricingSection } from "@/components/home/PricingSection";
 import { ProductCarouselSection } from "@/components/home/ProductCarouselSection";
+import { CoachTeaser } from "@/components/home/CoachTeaser";
 import { TestimonialsSection } from "@/components/shared/TestimonialsSection";
+import { InstagramSection } from "@/components/home/InstagramSection";
 import { PhotoGallery } from "@/components/home/PhotoGallery";
+import { PartnersSection } from "@/components/home/PartnersSection";
 import { CtaBannerSection } from "@/components/home/CtaBannerSection";
 import { getProducts } from "@/services/products.service";
 
@@ -23,12 +28,17 @@ export default async function HomePage() {
   return (
     <>
       <HomeHero />
+      <StatsBar />
       <MissionSection />
       <ServicesSection />
+      <FacilitiesSection />
       <PricingSection />
       {products.length > 0 && <ProductCarouselSection products={products} />}
+      <CoachTeaser />
       <TestimonialsSection />
+      <InstagramSection />
       <PhotoGallery />
+      <PartnersSection />
       <CtaBannerSection />
       <script
         type="application/ld+json"

@@ -20,6 +20,7 @@ const postDropdownLinks = [
 ];
 
 const rightNavLinks = [
+  { label: "Shop", href: "/shop" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -30,6 +31,7 @@ const mobileLinks = [
   { label: "Sessions", href: "/book?tab=Drop+Ins" },
   { label: "Packages", href: "/packages" },
   { label: "Private Lessons", href: "/private-lessons" },
+  { label: "Shop", href: "/shop" },
   { label: "Contact", href: "/contact" },
 ];
 

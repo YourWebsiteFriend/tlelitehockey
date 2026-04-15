@@ -38,6 +38,20 @@ export default function PrivateLessonsPage() {
         objectPosition="center 30%"
       />
 
+      {/* Testimonial pull-quote */}
+      <SectionWrapper className="bg-black">
+        <div className="max-w-2xl mx-auto text-center">
+          <span className="block text-[#F78E2B] text-[80px] leading-none font-serif opacity-20 select-none">&ldquo;</span>
+          <p className="text-white text-lg sm:text-xl leading-relaxed italic -mt-6">
+            The private lesson with Coach Max was great — we could see big gains after just one session. James is excited to practice at home and has been applying what he learned every day since.
+          </p>
+          <div className="mt-6">
+            <p className="text-white font-bold text-sm">Nicole G.</p>
+            <p className="text-white/40 text-xs">Hockey Parent</p>
+          </div>
+        </div>
+      </SectionWrapper>
+
       {/* 3-step process */}
       <SectionWrapper className="bg-[#111111]">
         <h2 className="section-heading text-white text-2xl sm:text-4xl text-center mb-10 sm:mb-14">

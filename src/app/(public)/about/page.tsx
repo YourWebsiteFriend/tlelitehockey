@@ -38,6 +38,23 @@ export default function AboutPage() {
         objectPosition="center 20%"
       />
 
+      {/* Stats bar */}
+      <div className="bg-[#111111] border-y border-white/10">
+        <div className="mx-auto max-w-4xl px-5 py-8 grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
+          {[
+            { num: "200+", label: "Players Trained" },
+            { num: "4+", label: "Seasons Running" },
+            { num: "8 Max", label: "Per Group" },
+            { num: "2", label: "Rink Locations" },
+          ].map((s) => (
+            <div key={s.label}>
+              <p className="text-3xl font-black text-[#F78E2B]">{s.num}</p>
+              <p className="text-xs uppercase tracking-widest text-white/50 mt-1">{s.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* Coaches */}
       <SectionWrapper className="bg-[#111111]">
         <p className="text-[#F78E2B] text-xs uppercase tracking-[0.3em] text-center mb-3">

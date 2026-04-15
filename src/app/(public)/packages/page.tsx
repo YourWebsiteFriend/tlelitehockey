@@ -95,6 +95,52 @@ export default function PackagesPage() {
           ))}
         </div>
 
+        {/* New package cards — Single Drop-In + Private Lesson */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6 max-w-3xl mt-5 sm:mt-6 px-1 sm:px-0">
+          <AnimateIn animation="fade-up" delay={300}>
+            <div className="relative bg-[#111111] rounded-2xl border border-white/10 p-6 sm:p-8 flex flex-col gap-4">
+              <div>
+                <p className="text-white/50 text-xs uppercase tracking-widest mb-1">Single Session</p>
+                <h2 className="text-white font-black text-2xl uppercase">Single Drop-In</h2>
+              </div>
+              <div className="flex items-baseline gap-2">
+                <span className="text-white text-4xl font-black">$50</span>
+                <span className="text-white/40 text-sm">per session</span>
+              </div>
+              <p className="text-white/60 text-sm leading-relaxed">Try out a session with no commitment. Perfect for players new to TL Elite or looking to drop in occasionally.</p>
+              <div className="mt-auto pt-4">
+                <Link
+                  href="/book"
+                  className="block w-full text-center rounded-full py-4 font-bold uppercase text-sm tracking-wide transition-colors border border-white/30 text-white hover:border-white/60 hover:bg-white/5"
+                >
+                  Book a Drop-In
+                </Link>
+              </div>
+            </div>
+          </AnimateIn>
+
+          <AnimateIn animation="fade-up" delay={400}>
+            <div className="relative bg-[#111111] rounded-2xl border border-white/10 p-6 sm:p-8 flex flex-col gap-4">
+              <div>
+                <p className="text-white/50 text-xs uppercase tracking-widest mb-1">1-on-1 Training</p>
+                <h2 className="text-white font-black text-2xl uppercase">Private Lesson</h2>
+              </div>
+              <div className="flex items-baseline gap-2">
+                <span className="text-white text-2xl font-black">Custom Pricing</span>
+              </div>
+              <p className="text-white/60 text-sm leading-relaxed">One coach. One player. Targeted development at your pace. Reach out for availability and pricing.</p>
+              <div className="mt-auto pt-4">
+                <Link
+                  href="/private-lessons"
+                  className="block w-full text-center rounded-full py-4 font-bold uppercase text-sm tracking-wide transition-colors border border-white/30 text-white hover:border-white/60 hover:bg-white/5"
+                >
+                  Inquire →
+                </Link>
+              </div>
+            </div>
+          </AnimateIn>
+        </div>
+
         {/* Fine print */}
         <div className="mt-12 max-w-xl">
           <p className="text-white/30 text-xs leading-relaxed">
@@ -107,6 +153,24 @@ export default function PackagesPage() {
               Contact us.
             </Link>
           </p>
+        </div>
+      </SectionWrapper>
+
+      {/* FAQ */}
+      <SectionWrapper className="bg-[#111111]">
+        <h2 className="section-heading text-white text-2xl sm:text-3xl text-center mb-10">COMMON QUESTIONS</h2>
+        <div className="max-w-2xl mx-auto flex flex-col divide-y divide-white/10">
+          {[
+            { q: "Do sessions expire?", a: "3-packs are valid for 3 months. 5-packs are valid for 6 months from date of purchase." },
+            { q: "Can I use at any TL Elite rink?", a: "Yes — packages are valid at Thayer Sports Center in Braintree and Gallo Ice Arena in Bourne." },
+            { q: "What age groups are covered?", a: "Drop-in sessions run for ages 5–6, 7–8, 9–10, and 10–11. Packages apply to any age group session." },
+            { q: "Can I give a package as a gift?", a: "Absolutely. Reach out via the Contact page and we'll set up a gift arrangement for you." },
+          ].map((faq) => (
+            <div key={faq.q} className="py-5">
+              <p className="text-white font-bold text-sm mb-2">{faq.q}</p>
+              <p className="text-white/60 text-sm leading-relaxed">{faq.a}</p>
+            </div>
+          ))}
         </div>
       </SectionWrapper>
     </>

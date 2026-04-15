@@ -65,6 +65,26 @@ export function Footer() {
                   </Link>
                 </li>
                 <li>
+                  <Link href="/clinics" className={linkClass}>
+                    Clinics
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/packages" className={linkClass}>
+                    Packages
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/shop" className={linkClass}>
+                    Shop
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/private-lessons" className={linkClass}>
+                    Private Lessons
+                  </Link>
+                </li>
+                <li>
                   <Link href="/about" className={linkClass}>
                     About TL Elite
                   </Link>
