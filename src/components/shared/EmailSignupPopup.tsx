@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { X } from "lucide-react";
 import { signupEmail } from "@/actions/email-signup.actions";
@@ -82,12 +83,12 @@ export function EmailSignupPopup() {
 
   return (
     <div
-      className="fixed inset-0 z-[200] flex items-center justify-center bg-black/70"
+      className="fixed top-0 left-0 w-screen h-[100dvh] z-[200] flex items-center justify-center bg-black/75 px-4"
       onClick={(e) => {
         if (e.target === e.currentTarget) dismiss();
       }}
     >
-      <div className="animate-popup-in bg-[#111111] border border-white/10 rounded-2xl p-8 max-w-md w-full mx-4 relative">
+      <div className="animate-popup-in bg-[#111111] border border-white/10 rounded-2xl p-8 max-w-md w-full relative">
         {/* Close button */}
         <button
           onClick={dismiss}
@@ -104,9 +105,13 @@ export function EmailSignupPopup() {
           </div>
         ) : (
           <>
-            <p className="text-[#F78E2B] text-xs uppercase tracking-[0.3em] font-bold mb-2">
-              TL Elite Hockey
-            </p>
+            <Image
+              src="/images/logo-transparent.png"
+              alt="TL Elite Hockey"
+              width={80}
+              height={40}
+              className="h-10 w-auto mb-4"
+            />
             <h2 className="text-white font-black uppercase text-2xl sm:text-3xl mb-3">
               STAY IN THE LOOP
             </h2>
