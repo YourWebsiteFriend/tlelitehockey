@@ -53,6 +53,22 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(loginUrl);
   }
 
+  // Admin guard: /admin/* requires an authenticated admin email.
+  // /admin/login is always accessible so admins can sign in.
+  if (pathname.startsWith("/admin") && pathname !== "/admin/login") {
+    const adminEmails = (process.env.ADMIN_EMAILS ?? "")
+      .split(",")
+      .map((e) => e.trim().toLowerCase())
+      .filter(Boolean);
+
+    const isAdmin =
+      !!user?.email && adminEmails.includes(user.email.toLowerCase());
+
+    if (!isAdmin) {
+      return NextResponse.redirect(new URL("/admin/login", request.url));
+    }
+  }
+
   return supabaseResponse;
 }
 

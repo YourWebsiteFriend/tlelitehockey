@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Montserrat } from "next/font/google";
 import "./globals.css";
-import { Navbar } from "@/components/layout/Navbar";
-import { Footer } from "@/components/layout/Footer";
-import { EmailSignupPopup } from "@/components/shared/EmailSignupPopup";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -18,6 +15,7 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://tlelitehockey.com"),
   title: {
     template: "%s | TL Elite Hockey",
     default: "TL Elite Hockey | Youth Player Development | Thayer Sports Center, Braintree, MA",
@@ -70,10 +68,7 @@ export default function RootLayout({
       className={`${inter.variable} ${montserrat.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-black text-white">
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
-        <EmailSignupPopup />
+        {children}
       </body>
     </html>
   );

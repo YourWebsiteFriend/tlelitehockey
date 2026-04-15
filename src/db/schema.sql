@@ -269,3 +269,56 @@ CREATE POLICY "Anyone can submit contact forms"
   WITH CHECK (true);
 
 -- SELECT: service role only (admin reads submissions)
+
+-- ============================================================
+-- EMAIL_SIGNUPS
+-- Newsletter / popup email captures.
+-- ============================================================
+CREATE TABLE IF NOT EXISTS public.email_signups (
+  id         uuid        PRIMARY KEY DEFAULT gen_random_uuid(),
+  email      text        NOT NULL UNIQUE,
+  source     text        NOT NULL DEFAULT 'popup'
+                         CHECK (source IN ('popup', 'footer', 'inline')),
+  created_at timestamptz NOT NULL DEFAULT now()
+);
+
+ALTER TABLE public.email_signups ENABLE ROW LEVEL SECURITY;
+
+DO $$
+BEGIN
+  IF NOT EXISTS (
+    SELECT 1 FROM pg_policies
+    WHERE tablename = 'email_signups' AND policyname = 'Anyone can subscribe'
+  ) THEN
+    EXECUTE 'CREATE POLICY "Anyone can subscribe" ON public.email_signups FOR INSERT WITH CHECK (true)';
+  END IF;
+END $$;
+
+-- ============================================================
+-- SITE_CONTENT
+-- Key/value store for admin-editable copy (hero text, CTAs, etc.).
+-- ============================================================
+CREATE TABLE IF NOT EXISTS public.site_content (
+  id         uuid        PRIMARY KEY DEFAULT gen_random_uuid(),
+  key        text        NOT NULL UNIQUE,
+  value      text        NOT NULL DEFAULT '',
+  updated_at timestamptz NOT NULL DEFAULT now(),
+  updated_by text
+);
+
+ALTER TABLE public.site_content ENABLE ROW LEVEL SECURITY;
+
+DO $$
+BEGIN
+  IF NOT EXISTS (
+    SELECT 1 FROM pg_policies
+    WHERE tablename = 'site_content' AND policyname = 'Anyone can read site content'
+  ) THEN
+    EXECUTE 'CREATE POLICY "Anyone can read site content" ON public.site_content FOR SELECT USING (true)';
+  END IF;
+END $$;
+
+-- ============================================================
+-- CONTACT_SUBMISSIONS — add is_read column
+-- ============================================================
+ALTER TABLE public.contact_submissions ADD COLUMN IF NOT EXISTS is_read boolean NOT NULL DEFAULT false;
