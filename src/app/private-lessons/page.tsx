@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { PageHero } from "@/components/layout/PageHero";
 import { SectionWrapper } from "@/components/shared/SectionWrapper";
 import { PrivateLessonsForm } from "@/components/forms/PrivateLessonsForm";
+import { AnimateIn } from "@/components/shared/AnimateIn";
 
 export const metadata: Metadata = {
   title: "Private Hockey Lessons",
@@ -34,6 +35,7 @@ export default function PrivateLessonsPage() {
         heading="PRIVATE LESSONS"
         body="One coach. One player. Maximum development."
         backgroundImage="/images/DSC02646.jpg"
+        objectPosition="center 20%"
       />
 
       {/* 3-step process */}
@@ -42,18 +44,24 @@ export default function PrivateLessonsPage() {
           HOW IT WORKS
         </h2>
         <div className="grid md:grid-cols-3 gap-8">
-          {steps.map((step) => (
-            <div key={step.number} className="text-center">
-              <div className="w-16 h-16 rounded-full border-2 border-[#4CAF50] flex items-center justify-center mx-auto mb-6">
-                <span className="text-[#4CAF50] text-2xl font-black">
-                  {step.number}
-                </span>
+          {steps.map((step, i) => (
+            <AnimateIn
+              key={step.number}
+              animation="fade-up"
+              delay={([0, 150, 300] as const)[i] ?? 0}
+            >
+              <div className="text-center">
+                <div className="w-16 h-16 rounded-full border-2 border-[#4CAF50] flex items-center justify-center mx-auto mb-6">
+                  <span className="text-[#4CAF50] text-2xl font-black">
+                    {step.number}
+                  </span>
+                </div>
+                <h3 className="font-bold uppercase text-white text-base mb-3">
+                  {step.title}
+                </h3>
+                <p className="text-white/60 text-sm leading-relaxed">{step.body}</p>
               </div>
-              <h3 className="font-bold uppercase text-white text-base mb-3">
-                {step.title}
-              </h3>
-              <p className="text-white/60 text-sm leading-relaxed">{step.body}</p>
-            </div>
+            </AnimateIn>
           ))}
         </div>
       </SectionWrapper>

@@ -26,6 +26,7 @@ export default async function BookPage({
         heading="BOOK A SESSION"
         body="Small groups, focused coaching, real results."
         backgroundImage="/images/DSC02667.jpg"
+        objectPosition="center 30%"
       />
       <SectionWrapper className="bg-black">
         <SessionsBoard sessions={sessions} defaultTab={tab} />

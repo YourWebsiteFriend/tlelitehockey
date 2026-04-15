@@ -5,6 +5,7 @@ import { PageHero } from "@/components/layout/PageHero";
 import { SectionWrapper } from "@/components/shared/SectionWrapper";
 import { SessionsBoard } from "@/components/book/SessionsBoard";
 import { getSessionsBySeason } from "@/services/sessions.service";
+import { AnimateIn } from "@/components/shared/AnimateIn";
 
 export const metadata: Metadata = {
   title: "Youth Hockey Clinics",
@@ -27,30 +28,35 @@ export default async function ClinicsPage() {
         heading="SEASONAL CLINICS"
         body="High-intensity skill development throughout the year. Up to 25 players, 5+ coaches on the ice."
         backgroundImage="/images/DSC02640.jpg"
+        objectPosition="center 20%"
       />
 
       {/* Stats bar */}
       <SectionWrapper className="bg-[#111111]">
-        <div className="grid md:grid-cols-3 gap-6">
-          {stats.map((stat) => (
-            <div
-              key={stat.label}
-              className="bg-black rounded-2xl p-8 text-center"
-            >
-              <p className="text-[#F78E2B] text-5xl font-black">{stat.value}</p>
-              <p className="text-white/60 uppercase text-sm tracking-wide mt-2">
-                {stat.label}
-              </p>
-            </div>
-          ))}
-        </div>
+        <AnimateIn animation="fade-up">
+          <div className="grid md:grid-cols-3 gap-6">
+            {stats.map((stat) => (
+              <div
+                key={stat.label}
+                className="bg-black rounded-2xl p-8 text-center"
+              >
+                <p className="text-[#F78E2B] text-5xl font-black">{stat.value}</p>
+                <p className="text-white/60 uppercase text-sm tracking-wide mt-2">
+                  {stat.label}
+                </p>
+              </div>
+            ))}
+          </div>
+        </AnimateIn>
       </SectionWrapper>
 
       {/* Sessions */}
       <SectionWrapper className="bg-black">
-        <h2 className="section-heading text-white text-3xl sm:text-4xl mb-10">
-          UPCOMING CLINICS
-        </h2>
+        <AnimateIn animation="fade-up">
+          <h2 className="section-heading text-white text-3xl sm:text-4xl mb-10">
+            UPCOMING CLINICS
+          </h2>
+        </AnimateIn>
 
         {clinicSessions.length === 0 ? (
           <div className="bg-[#111111] rounded-2xl p-12 text-center text-white/60">

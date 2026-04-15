@@ -165,6 +165,22 @@
   .animate-fade-in {
     animation: fade-in 0.5s ease both;
   }
+
+  @keyframes fade-left {
+    from { opacity: 0; transform: translateX(-24px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+  .animate-fade-left {
+    animation: fade-left 0.6s ease both;
+  }
+
+  @keyframes popup-in {
+    from { opacity: 0; transform: scale(0.95) translateY(8px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+  }
+  .animate-popup-in {
+    animation: popup-in 0.3s ease both;
+  }
   .animate-delay-100 { animation-delay: 0.1s; }
   .animate-delay-200 { animation-delay: 0.2s; }
   .animate-delay-300 { animation-delay: 0.3s; }

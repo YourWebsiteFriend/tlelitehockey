@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero } from "@/components/layout/PageHero";
 import { SectionWrapper } from "@/components/shared/SectionWrapper";
+import { AnimateIn } from "@/components/shared/AnimateIn";
 
 export const metadata: Metadata = {
   title: "Session Packages",
@@ -37,6 +38,7 @@ export default function PackagesPage() {
         heading="SESSION PACKAGES"
         body="Buy in bulk, save per session. Use your sessions any available drop-in slot."
         backgroundImage="/images/DSC02684.jpg"
+        objectPosition="center 30%"
       />
 
       <SectionWrapper className="bg-black">
@@ -49,9 +51,13 @@ export default function PackagesPage() {
 
         {/* Package Cards */}
         <div className="grid md:grid-cols-2 gap-6 max-w-3xl">
-          {packages.map((pkg) => (
-            <div
+          {packages.map((pkg, i) => (
+            <AnimateIn
               key={pkg.name}
+              animation="fade-up"
+              delay={([0, 150] as const)[i] ?? 0}
+            >
+            <div
               className={`relative bg-[#111111] rounded-2xl border p-8 flex flex-col gap-4 ${
                 pkg.badge ? "border-[#4CAF50]/50" : "border-white/10"
               }`}
@@ -85,6 +91,7 @@ export default function PackagesPage() {
                 </Link>
               </div>
             </div>
+            </AnimateIn>
           ))}
         </div>
 

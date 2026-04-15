@@ -29,6 +29,9 @@ function badgeClass(badge: ProductBadge): string {
 }
 
 type SortOption = "default" | "price-asc" | "price-desc";
+type CategoryFilter = "All" | "Hats" | "T-Shirts" | "Hoodies" | "Snapbacks";
+
+const ALL_CATEGORIES: CategoryFilter[] = ["All", "Hats", "T-Shirts", "Hoodies", "Snapbacks"];
 
 function sortProducts(products: Product[], sort: SortOption): Product[] {
   const copy = [...products];
@@ -37,13 +40,26 @@ function sortProducts(products: Product[], sort: SortOption): Product[] {
   return copy;
 }
 
+function filterByCategory(products: Product[], category: CategoryFilter): Product[] {
+  if (category === "All") return products;
+  return products.filter((p) => p.category === category);
+}
+
 function ShopInner({ products }: Props) {
   const { addItem, itemCount } = useCart();
   const [sort, setSort] = useState<SortOption>("default");
+  const [category, setCategory] = useState<CategoryFilter>("All");
   const [cartOpen, setCartOpen] = useState(false);
   const [quickView, setQuickView] = useState<Product | null>(null);
 
   const sorted = sortProducts(products, sort);
+  const displayed = filterByCategory(sorted, category);
+
+  // Only show tabs if products exist in that category
+  const availableCategories = ALL_CATEGORIES.filter((cat) => {
+    if (cat === "All") return true;
+    return products.some((p) => p.category === cat);
+  });
 
   const handleAddToCart = (product: Product) => {
     if (!product.stripe_price_id || !product.stripe_product_id) return;
@@ -64,10 +80,7 @@ function ShopInner({ products }: Props) {
     <div className="bg-black min-h-screen">
       <div className="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8 py-20">
         {/* Top bar */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 mb-12">
-          <h1 className="section-heading text-white text-3xl sm:text-4xl">
-            SHOP TL GEAR
-          </h1>
+        <div className="flex flex-col sm:flex-row sm:items-center justify-end gap-6 mb-8">
           <div className="flex items-center gap-4">
             {/* Sort */}
             <select
@@ -96,17 +109,36 @@ function ShopInner({ products }: Props) {
           </div>
         </div>
 
+        {/* Category filter tabs */}
+        {availableCategories.length > 1 && (
+          <div className="flex gap-6 border-b border-white/10 mb-10 overflow-x-auto">
+            {availableCategories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setCategory(cat)}
+                className={`pb-3 text-sm font-bold uppercase tracking-wide whitespace-nowrap transition-colors ${
+                  category === cat
+                    ? "text-[#F78E2B] border-b-2 border-[#F78E2B]"
+                    : "text-white/50 hover:text-white/80"
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+        )}
+
         {/* Product list */}
         <div className="flex flex-col gap-4">
-          {sorted.map((product) => (
+          {displayed.map((product) => (
             <div
               key={product.id}
               id={product.slug}
-              className="bg-[#111111] rounded-2xl border border-white/10 flex overflow-hidden hover:border-white/30 transition-colors group"
+              className="bg-[#111111] rounded-2xl border border-white/10 flex flex-col sm:flex-row overflow-hidden hover:border-white/30 transition-colors group"
             >
               {/* Image */}
               <div
-                className="relative w-44 min-w-[11rem] bg-[#1a1a1a] cursor-pointer overflow-hidden"
+                className="relative w-full h-48 sm:w-44 sm:h-auto sm:min-w-[11rem] bg-[#1a1a1a] cursor-pointer overflow-hidden"
                 onClick={() => setQuickView(product)}
               >
                 {product.images.length > 0 ? (
@@ -133,7 +165,7 @@ function ShopInner({ products }: Props) {
               </div>
 
               {/* Info */}
-              <div className="p-6 flex flex-col justify-between flex-1">
+              <div className="p-4 sm:p-6 flex flex-col justify-between flex-1">
                 <div>
                   <div className="flex items-start justify-between gap-4">
                     <div>

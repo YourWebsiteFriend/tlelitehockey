@@ -35,6 +35,7 @@ export default function AboutPage() {
         backgroundImage="/images/DSC02709.jpg"
         ctaLabel="Book a Session"
         ctaHref="/book"
+        objectPosition="center 20%"
       />
 
       {/* Coaches */}

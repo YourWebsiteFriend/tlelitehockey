@@ -8,6 +8,7 @@ interface PageHeroProps {
   ctaLabel?: string;
   ctaHref?: string;
   backgroundImage?: string;
+  objectPosition?: string;
 }
 
 export function PageHero({
@@ -16,6 +17,7 @@ export function PageHero({
   ctaLabel,
   ctaHref,
   backgroundImage,
+  objectPosition = "center 30%",
 }: PageHeroProps) {
   return (
     <div className="relative w-full h-[60vh] min-h-[360px] flex items-center justify-center bg-black overflow-hidden">
@@ -26,6 +28,7 @@ export function PageHero({
           alt=""
           fill
           className="object-cover"
+          style={{ objectPosition }}
           priority
           sizes="100vw"
         />

@@ -14,19 +14,21 @@ export function CartDrawer({ isOpen, onClose }: Props) {
   const { items, removeItem, updateQuantity, total, itemCount, clearCart } =
     useCart();
   const [loading, setLoading] = useState(false);
+  const [checkoutError, setCheckoutError] = useState<string | null>(null);
 
   const handleCheckout = async () => {
     if (items.length === 0) return;
     setLoading(true);
+    setCheckoutError(null);
     try {
       const result = await createShopCheckout(items);
       if (result.success) {
         window.location.href = result.data.checkoutUrl;
       } else {
-        alert(result.error ?? "Something went wrong at checkout.");
+        setCheckoutError(result.error ?? "Something went wrong at checkout.");
       }
     } catch {
-      alert("Something went wrong at checkout.");
+      setCheckoutError("Something went wrong at checkout.");
     } finally {
       setLoading(false);
     }
@@ -137,6 +139,9 @@ export function CartDrawer({ isOpen, onClose }: Props) {
                 ${total.toFixed(2)}
               </span>
             </div>
+            {checkoutError && (
+              <p className="text-red-400 text-xs text-center mb-3">{checkoutError}</p>
+            )}
             <button
               onClick={handleCheckout}
               disabled={loading}

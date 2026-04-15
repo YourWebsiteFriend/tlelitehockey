@@ -47,6 +47,7 @@ export default async function SchedulePage() {
         heading="SCHEDULE"
         body="All current sessions by day. Book any open spot directly from the session."
         backgroundImage="/images/DSC02663.jpg"
+        objectPosition="center 30%"
       />
 
       <SectionWrapper className="bg-black">

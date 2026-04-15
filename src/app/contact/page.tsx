@@ -3,6 +3,7 @@ import { Mail, Phone, MapPin } from "lucide-react";
 import { PageHero } from "@/components/layout/PageHero";
 import { SectionWrapper } from "@/components/shared/SectionWrapper";
 import { ContactForm } from "@/components/forms/ContactForm";
+import { AnimateIn } from "@/components/shared/AnimateIn";
 
 export const metadata: Metadata = {
   title: "Contact TL Elite Hockey",
@@ -18,15 +19,15 @@ export default function ContactPage() {
       <SectionWrapper className="bg-black">
         <div className="grid lg:grid-cols-3 gap-16">
           {/* Form */}
-          <div className="lg:col-span-2">
+          <AnimateIn animation="fade-left" className="lg:col-span-2">
             <h2 className="section-heading text-white text-2xl mb-10">
               SEND US A MESSAGE
             </h2>
             <ContactForm />
-          </div>
+          </AnimateIn>
 
           {/* Sidebar */}
-          <div className="space-y-8">
+          <AnimateIn animation="fade-up" delay={200} className="space-y-8">
             {/* Contact Info */}
             <div>
               <p className="text-[#F78E2B] text-xs uppercase tracking-[0.3em] font-bold mb-6">
@@ -111,7 +112,7 @@ export default function ContactPage() {
                 </a>
               </div>
             </div>
-          </div>
+          </AnimateIn>
         </div>
       </SectionWrapper>
     </>
