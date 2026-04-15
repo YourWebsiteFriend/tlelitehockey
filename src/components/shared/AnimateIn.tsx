@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 type Animation = "fade-up" | "fade-left" | "fade-in";
 type Delay = 0 | 100 | 150 | 200 | 300 | 400;
@@ -27,7 +27,7 @@ export function AnimateIn({
   className = "",
   as: Tag = "div",
 }: AnimateInProps) {
-  const ref = useRef<HTMLDivElement & HTMLElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
   const [inView, setInView] = useState(false);
 
   useEffect(() => {
@@ -55,8 +55,7 @@ export function AnimateIn({
 
   return (
     <Tag
-      // @ts-expect-error — ref works for both div and section
-      ref={ref}
+      ref={ref as React.RefObject<HTMLDivElement & HTMLElement>}
       className={`${appliedClass} ${className}`}
       style={delayStyle}
     >
