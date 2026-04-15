@@ -413,20 +413,6 @@ VALUES
     true
   ),
   (
-    'Summer 2026 Package — Goalie',
-    'All Ages',
-    'Thu',
-    60,
-    399.00,
-    'Summer 2026',
-    '2026-07-10',
-    8,
-    10,
-    'prod_placeholder_summer_goalie',
-    'price_placeholder_summer_goalie',
-    true
-  ),
-  (
     'Summer 2026 Package — Mites',
     'Ages 5-8',
     'Tue, Thu',

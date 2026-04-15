@@ -3,7 +3,6 @@ import { z } from "zod";
 export const POSITIONS = [
   "Forward",
   "Defense",
-  "Goalie",
   "Not Sure Yet",
 ] as const;
 
@@ -28,7 +27,6 @@ export const SKILLS_FOCUS_OPTIONS = [
   "Puck Handling",
   "Passing",
   "Defense",
-  "Goaltending",
   "Overall Development",
 ] as const;
 
