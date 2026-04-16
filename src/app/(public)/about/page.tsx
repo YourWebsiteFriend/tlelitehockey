@@ -45,7 +45,7 @@ export default function AboutPage() {
           {[
             { num: "200+", label: "Players Trained" },
             { num: "4+", label: "Seasons Running" },
-            { num: "8 Max", label: "Per Group" },
+            { num: "5★", label: "Positive Reviews" },
             { num: "2", label: "Rink Locations" },
           ].map((s) => (
             <div key={s.label}>

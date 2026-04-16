@@ -1,6 +1,6 @@
 const stats = [
   { num: "200+", label: "Players Trained" },
-  { num: "8 Max", label: "Per Group" },
+  { num: "5★", label: "Positive Reviews" },
   { num: "5+", label: "Coaches On Ice" },
   { num: "Est. 2021", label: "Founded" },
 ];
