@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { PageHero } from "@/components/layout/PageHero";
 import { SectionWrapper } from "@/components/shared/SectionWrapper";
 import { TestimonialsSection } from "@/components/shared/TestimonialsSection";
@@ -48,8 +49,8 @@ export default function AboutPage() {
             { num: "2", label: "Rink Locations" },
           ].map((s) => (
             <div key={s.label}>
-              <p className="text-3xl font-black text-[#F78E2B]">{s.num}</p>
-              <p className="text-xs uppercase tracking-widest text-white/50 mt-1">{s.label}</p>
+              <p className="text-3xl font-black text-white">{s.num}</p>
+              <p className="text-xs uppercase tracking-widest text-white mt-1">{s.label}</p>
             </div>
           ))}
         </div>
@@ -67,26 +68,39 @@ export default function AboutPage() {
         <CoachesGrid coaches={coaches} />
       </SectionWrapper>
 
-      {/* Mission Statement */}
-      <div className="w-full h-px bg-white/10" />
-      <SectionWrapper className="bg-black">
-        <span className="block text-[#F78E2B] text-[80px] sm:text-[120px] leading-none font-serif text-center opacity-15 select-none">
-          &ldquo;
-        </span>
-        <h2 className="section-heading text-white text-3xl sm:text-5xl lg:text-6xl text-center -mt-6 sm:-mt-8">
-          INTENSITY.
-          <br />
-          DISCIPLINE.
-          <br />
-          PRECISION.
-        </h2>
-        <p className="text-white/60 text-base sm:text-lg max-w-2xl mx-auto text-center mt-5 sm:mt-6 leading-relaxed px-2 sm:px-0">
-          These aren&apos;t just words on a wall. They&apos;re the standard we hold
-          every player and coach to every time the puck drops. TL Elite was
-          built on the belief that elite development doesn&apos;t require elite
-          access — it requires elite effort.
-        </p>
-      </SectionWrapper>
+      {/* Mission Statement — image background */}
+      <div className="relative py-24 sm:py-36 overflow-hidden">
+        {/* Background image */}
+        <Image
+          src="/images/DSC02727.jpg"
+          alt="TL Elite Hockey training on the ice"
+          fill
+          className="object-cover object-center"
+          sizes="100vw"
+        />
+        {/* Dark overlay */}
+        <div className="absolute inset-0 bg-black/75" />
+
+        {/* Content */}
+        <div className="relative z-10 mx-auto max-w-[1200px] px-5 sm:px-8 lg:px-10 text-center">
+          <span className="block text-[#F78E2B] text-[80px] sm:text-[120px] leading-none font-serif text-center opacity-20 select-none -mb-6 sm:-mb-8">
+            &ldquo;
+          </span>
+          <h2 className="section-heading text-white text-3xl sm:text-5xl lg:text-6xl text-center">
+            INTENSITY.
+            <br />
+            DISCIPLINE.
+            <br />
+            PRECISION.
+          </h2>
+          <p className="text-white/70 text-base sm:text-lg max-w-2xl mx-auto text-center mt-5 sm:mt-6 leading-relaxed px-2 sm:px-0">
+            These aren&apos;t just words on a wall. They&apos;re the standard we hold
+            every player and coach to every time the puck drops. TL Elite was
+            built on the belief that elite development doesn&apos;t require elite
+            access — it requires elite effort.
+          </p>
+        </div>
+      </div>
 
       <TestimonialsSection />
       <CtaBannerSection />

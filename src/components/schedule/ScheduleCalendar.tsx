@@ -29,13 +29,18 @@ function bookLink(session: Session): string {
   return `/book?tab=${encodeURIComponent(session.season)}`;
 }
 
-function getSessionsForDay(sessions: Session[], day: string): Session[] {
-  return sessions.filter((s) =>
-    s.day
-      ?.split(",")
-      .map((d) => d.trim())
-      .includes(day)
-  );
+const ABBR_TO_FULL: Record<string, string> = {
+  Mon: "Monday", Tue: "Tuesday", Wed: "Wednesday",
+  Thu: "Thursday", Fri: "Friday", Sat: "Saturday", Sun: "Sunday",
+};
+
+function getSessionsForDay(sessions: Session[], dayAbbr: string): Session[] {
+  const fullName = ABBR_TO_FULL[dayAbbr] ?? dayAbbr;
+  return sessions.filter((s) => {
+    if (!s.day) return false;
+    const parts = s.day.split(",").map((d) => d.trim());
+    return parts.some((p) => p === dayAbbr || p === fullName);
+  });
 }
 
 interface SessionChipProps {

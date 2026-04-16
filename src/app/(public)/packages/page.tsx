@@ -23,9 +23,9 @@ const packages = [
   {
     name: "5-Session Pack",
     sessions: 5,
-    price: 229,
-    perSession: (229 / 5).toFixed(2),
-    savings: 50 * 5 - 229,
+    price: 249,
+    perSession: (249 / 5).toFixed(2),
+    savings: 50 * 5 - 249,
     description: "Five drop-in sessions at our best per-session rate. Perfect for committed players looking to level up.",
     badge: "BEST VALUE",
   },
