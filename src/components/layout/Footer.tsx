@@ -110,7 +110,7 @@ export function Footer() {
             {/* Social links */}
             <div className="flex items-center gap-4 mt-6">
               <a
-                href="https://www.facebook.com/TLeliteHockey"
+                href="https://www.facebook.com/tlelitehockey"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="TL Elite Hockey on Facebook"
@@ -143,13 +143,6 @@ export function Footer() {
         <div className="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="flex items-center gap-4 text-white/40 text-xs">
             <span>© 2026 TL Elite Hockey School LLC</span>
-            <span className="hidden sm:inline">·</span>
-            <Link href="#" className="hover:text-white/70 transition-colors focus:outline-none focus-visible:underline">
-              Terms &amp; Conditions
-            </Link>
-            <Link href="#" className="hover:text-white/70 transition-colors focus:outline-none focus-visible:underline">
-              Privacy Policy
-            </Link>
           </div>
           <p className="text-white/40 text-xs">
             Managed by{" "}
